@@ -52,24 +52,24 @@ export default function Navigation({ darkMode, toggleDarkMode }: NavigationProps
             ))}
             
             {/* Dark Mode Toggle */}
-            <button
+            {/* <button
               onClick={toggleDarkMode}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
               aria-label="Toggle dark mode"
             >
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
+            </button> */}
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
-            <button
+            {/* <button
               onClick={toggleDarkMode}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
               aria-label="Toggle dark mode"
             >
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
+            </button> */}
             <button
               onClick={toggleMenu}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
