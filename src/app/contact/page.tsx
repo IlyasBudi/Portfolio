@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Clock, Github, Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
+import { Mail, MapPin, Github, Linkedin, Twitter, Instagram, Facebook } from 'lucide-react';
 import ContactForm from '@/components/ContactForm';
 import { siteConfig } from '@/lib/config';
 

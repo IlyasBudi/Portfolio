@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowLeft, ExternalLink, Github, Calendar, Tag } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Github, Tag } from 'lucide-react'
 import { getProjectBySlug, getAllProjects } from '@/lib/markdown'
 import { siteConfig } from '@/lib/config'
 import ProjectContent from '@/components/ProjectContent'
