@@ -22,7 +22,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       {/* Project Image */}
       <div className="relative h-48 overflow-hidden">
         <Image
-          src={project.image}
+          src={Array.isArray(project.image) ? project.image[0] : project.image}
           alt={project.title}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-300"
