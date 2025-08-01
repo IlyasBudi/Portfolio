@@ -8,10 +8,10 @@ export const siteConfig = {
   location: "Tangerang, Indonesia",
   
   social: {
-    github: "https://github.com/johndoe",
-    linkedin: "https://linkedin.com/in/johndoe",
-    facebook: "https://twitter.com/johndoe",
-    instagram: "https://instagram.com/johndoe",
+    github: "https://github.com/IlyasBudi",
+    linkedin: "https://www.linkedin.com/in/ilyas-budi/",
+    facebook: "https://www.facebook.com/ilyasbudi.jati/",
+    instagram: "https://www.instagram.com/hyuu.j_/",
   },
   
   navigation: [
