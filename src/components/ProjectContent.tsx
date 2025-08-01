@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
+import { Project } from '@/types'; // tambahkan ini di atas
 
 export default function ProjectContent({ project, images }: { project: Project, images: string[] }) {
   const [isOpen, setIsOpen] = useState(false)

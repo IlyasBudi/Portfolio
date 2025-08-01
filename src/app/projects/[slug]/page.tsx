@@ -5,6 +5,7 @@ import { ArrowLeft, ExternalLink, Github, Tag } from 'lucide-react'
 import { getProjectBySlug, getAllProjects } from '@/lib/markdown'
 import { siteConfig } from '@/lib/config'
 import ProjectContent from '@/components/ProjectContent'
+import { Project } from '@/types'; // tambahkan ini di atas
 
 interface ProjectPageProps {
   params: Promise<{
