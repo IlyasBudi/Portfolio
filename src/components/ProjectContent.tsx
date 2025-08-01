@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useState } from 'react'
 
-export default function ProjectContent({ project, images }: { project: string, images: string[] }) {
+export default function ProjectContent({ project, images }: { project: Project, images: string[] }) {
   const [isOpen, setIsOpen] = useState(false)
   const [currentImg, setCurrentImg] = useState<string | null>(null)
 
