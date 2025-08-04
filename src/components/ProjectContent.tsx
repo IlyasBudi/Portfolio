@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { Project } from '@/types'; // tambahkan ini di atas
-import { ChevronLeft, ChevronRight, X } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 export default function ProjectContent({ project, images }: { project: Project, images: string[] }) {
   const [isOpen, setIsOpen] = useState(false)
