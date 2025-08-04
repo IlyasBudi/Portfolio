@@ -4,8 +4,8 @@ description: "A platform to monitor production processes, raw material stock, an
 category: "Web Development"
 featured: true
 techStack: ["Laravel", "TailwindCSS", "MySQL"]
-demoLink: "#"
-githubLink: "#"
+demoLink: "/#"
+githubLink: "/#"
 image: ["/images/projects/garment/garment1.webp", "/images/projects/garment/garment2.webp", "/images/projects/garment/garment3.webp", "/images/projects/garment/garment4.webp", "/images/projects/garment/garment5.webp", "/images/projects/garment/garment6.webp", "/images/projects/garment/garment7.webp", "/images/projects/garment/garment8.webp"]
 date: "2023-11-20"
 ---

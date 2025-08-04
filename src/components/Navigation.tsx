@@ -25,7 +25,8 @@ export default function Navigation({ }: NavigationProps) {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="font-bold text-xl text-gray-900 dark:text-white">
-            {siteConfig.name}
+            {/* {siteConfig.name} */}
+            Ilyas Budi
           </Link>
 
           {/* Desktop Navigation */}

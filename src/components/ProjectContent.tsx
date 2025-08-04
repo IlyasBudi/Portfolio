@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { Project } from '@/types'; // tambahkan ini di atas
+import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 export default function ProjectContent({ project, images }: { project: Project, images: string[] }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -61,9 +62,9 @@ export default function ProjectContent({ project, images }: { project: Project, 
     onClick={() => setIsOpen(false)}
   >
     <div className="relative max-w-5xl w-full p-4">
-      {/* Tombol panah kiri tanpa background */}
+      {/* Tombol panah kiri */}
       <button
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-700 text-4xl font-bold z-10 hover:scale-110 transition"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-700 z-10 hover:scale-110 transition"
         onClick={(e) => {
           e.stopPropagation()
           const currentIndex = images.indexOf(currentImg)
@@ -71,12 +72,12 @@ export default function ProjectContent({ project, images }: { project: Project, 
           setCurrentImg(images[prevIndex])
         }}
       >
-        &#8592;
+        <ChevronLeft size={40} />
       </button>
 
-      {/* Tombol panah kanan tanpa background */}
+      {/* Tombol panah kanan */}
       <button
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-700 text-4xl font-bold z-10 hover:scale-110 transition"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-slate-700 z-10 hover:scale-110 transition"
         onClick={(e) => {
           e.stopPropagation()
           const currentIndex = images.indexOf(currentImg)
@@ -84,7 +85,7 @@ export default function ProjectContent({ project, images }: { project: Project, 
           setCurrentImg(images[nextIndex])
         }}
       >
-        &#8594;
+        <ChevronRight size={40} />
       </button>
 
       {/* Gambar besar */}

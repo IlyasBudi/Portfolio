@@ -23,8 +23,8 @@ export default function ProjectsPage() {
         category: 'Web Development',
         featured: true,
         techStack: ['Express.js', 'Angular', 'TypeScript', 'Bootstrap', 'PostgreSQL'],
-        demoLink: '#',
-        githubLink: '#',
+        demoLink: '/#',
+        githubLink: '/#',
         image: '/images/projects/darunnajah/dn1.webp',
         content: '',
         date: '2024-01-15'
@@ -36,25 +36,25 @@ export default function ProjectsPage() {
         category: 'Web Development',
         featured: true,
         techStack: ["Laravel", "TailwindCSS", "MySQL"],
-        demoLink: '#',
-        githubLink: '#',
+        demoLink: '/#',
+        githubLink: '/#',
         image: '/images/projects/garment/garment1.webp',
         content: '',
         date: '2023-11-20'
       },
-      // {
-      //   slug: 'data-visualization-dashboard',
-      //   title: 'Data Visualization Dashboard',
-      //   description: 'Interactive dashboard for business analytics with real-time data processing',
-      //   category: 'Data Science',
-      //   featured: false,
-      //   techStack: ['React', 'D3.js', 'Python', 'FastAPI', 'PostgreSQL'],
-      //   demoLink: 'https://dashboard-demo.com',
-      //   githubLink: 'https://github.com/johndoe/data-dashboard',
-      //   image: '/images/projects/dashboard.jpg',
-      //   content: '',
-      //   date: '2023-08-10'
-      // }
+      {
+        slug: 'online-bus-tour-booking-system',
+        title: 'Online Bus Tour Booking System',
+        description: 'A web-based booking system that enables customers to reserve tour buses from multiple branches with dynamic pricing based on distance, rental duration, and bus type.',
+        category: 'Web Development',
+        featured: true,
+        techStack: ["Laravel", "TailwindCSS", "MySQL", "Midtrans", "Leaflet.js", "mapbox"],
+        demoLink: '/#',
+        githubLink: 'https://github.com/IlyasBudi/TA-2',
+        image: '/images/projects/booking-bus/booking-bus1.png',
+        content: '',
+        date: '2023-11-20'
+      },
     ];
 
     setProjects(mockProjects);

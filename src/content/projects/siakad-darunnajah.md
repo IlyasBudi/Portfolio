@@ -4,8 +4,8 @@ description: "Academic information system for managing student data, grades, att
 category: "Web Development"
 featured: true
 techStack: ["Express.js", "Angular", "TypeScript", "Bootstrap", "PostgreSQL"]
-demoLink: "#"
-githubLink: "#"
+demoLink: "/#"
+githubLink: "/#"
 image: ["/images/projects/darunnajah/dn1.webp", "/images/projects/darunnajah/dn2.webp", "/images/projects/darunnajah/dn3.webp", "/images/projects/darunnajah/dn4.webp", "/images/projects/darunnajah/dn5.webp"]
 date: "2024-01-15"
 ---

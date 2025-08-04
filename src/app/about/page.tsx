@@ -155,7 +155,7 @@ export default function AboutPage() {
             {/* Experience */}
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-200 dark:border-gray-700">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Work Experience
+                Experience
               </h3>
               <div className="space-y-6">
                 {siteConfig.experience.map((exp, index) => (
