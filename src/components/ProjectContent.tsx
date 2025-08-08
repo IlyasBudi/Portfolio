@@ -13,11 +13,11 @@ export default function ProjectContent({ project, images }: { project: Project, 
   const goPrev = () => setCurrentIndex((i) => (i - 1 + images.length) % images.length)
   const goNext = () => setCurrentIndex((i) => (i + 1) % images.length)
 
-  const scrollThumbs = (dir: 'left' | 'right') => {
-    const el = thumbsRef.current
-    if (!el) return
-    el.scrollBy({ left: dir === 'left' ? -200 : 200, behavior: 'smooth' })
-  }
+  // const scrollThumbs = (dir: 'left' | 'right') => {
+  //   const el = thumbsRef.current
+  //   if (!el) return
+  //   el.scrollBy({ left: dir === 'left' ? -200 : 200, behavior: 'smooth' })
+  // }
 
   if (!images?.length) return null
 
