@@ -43,8 +43,8 @@ export default function ProjectsPage() {
         date: '2023-11-20'
       },
       {
-        slug: 'online-bus-tour-booking-system',
-        title: 'Online Bus Tour Booking System',
+        slug: 'tour-bus-booking-system',
+        title: 'Tour Bus Booking System',
         description: 'A web-based booking system that enables customers to reserve tour buses from multiple branches with dynamic pricing based on distance, rental duration, and bus type.',
         category: 'Web Development',
         featured: true,

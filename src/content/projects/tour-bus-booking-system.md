@@ -1,5 +1,5 @@
 ---
-title: 'Online Bus Tour Booking System'
+title: 'Tour Bus Booking System'
 description: 'A web-based booking system that enables customers to reserve tour buses from multiple branches with dynamic pricing based on distance, rental duration, and bus type. The system also includes admin management features for fleet scheduling, user control, and integrated online payment.'
 category: 'Web Development'
 featured: true,
@@ -10,7 +10,7 @@ image: ["/images/projects/booking-bus/booking-bus1.png", "/images/projects/booki
 date: '2023-11-20'
 ---
 
-# Online Bus Tour Booking System
+# Tour Bus Booking System
 
 A web-based booking system that enables customers to reserve tour buses from multiple branches with dynamic pricing based on distance, rental duration, and bus type. The system also includes admin management features for fleet scheduling, user control, and integrated online payment.
 
