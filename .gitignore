@@ -111,3 +111,5 @@ dist
 tmp/
 temp/
 
+# Environment variables
+.env
