@@ -1,25 +1,76 @@
 @import "tailwindcss";
 
+/* Theme System with CSS Custom Properties */
 :root {
+  /* Default theme colors (Light theme) */
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #2563eb;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* System preference fallback removed - themes are fully controlled by JavaScript */
+
+/* Theme-specific body styling for maximum specificity */
+body.theme-light {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
 }
 
+body.theme-dark {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+}
+
+body.theme-blue {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+}
+
+body.theme-purple {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+}
+
+body.theme-green {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+}
+
+/* Smooth transitions for theme changes */
 * {
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 html {
@@ -29,7 +80,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-sans, system-ui, sans-serif);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
