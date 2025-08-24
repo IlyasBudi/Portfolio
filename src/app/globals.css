@@ -3,19 +3,96 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #475569;
+  --accent: #f8fafc;
+  --accent-foreground: #334155;
+  --border: #e2e8f0;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+}
+
+/* Light Theme (default) */
+[data-theme="light"] {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #475569;
+  --accent: #f8fafc;
+  --accent-foreground: #334155;
+  --border: #e2e8f0;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --secondary: #1e293b;
+  --secondary-foreground: #cbd5e1;
+  --accent: #334155;
+  --accent-foreground: #f1f5f9;
+  --border: #475569;
+  --card: #1e293b;
+  --card-foreground: #f8fafc;
+}
+
+/* Blue Theme */
+[data-theme="blue"] {
+  --background: #eff6ff;
+  --foreground: #1e3a8a;
+  --primary: #1d4ed8;
+  --primary-foreground: #ffffff;
+  --secondary: #dbeafe;
+  --secondary-foreground: #1e40af;
+  --accent: #bfdbfe;
+  --accent-foreground: #1e3a8a;
+  --border: #93c5fd;
+  --card: #ffffff;
+  --card-foreground: #1e3a8a;
+}
+
+/* Purple Theme */
+[data-theme="purple"] {
+  --background: #faf5ff;
+  --foreground: #581c87;
+  --primary: #7c3aed;
+  --primary-foreground: #ffffff;
+  --secondary: #e9d5ff;
+  --secondary-foreground: #6b21a8;
+  --accent: #c4b5fd;
+  --accent-foreground: #581c87;
+  --border: #a855f7;
+  --card: #ffffff;
+  --card-foreground: #581c87;
+}
+
+/* Green Theme */
+[data-theme="green"] {
+  --background: #f0fdf4;
+  --foreground: #14532d;
+  --primary: #16a34a;
+  --primary-foreground: #ffffff;
+  --secondary: #dcfce7;
+  --secondary-foreground: #15803d;
+  --accent: #bbf7d0;
+  --accent-foreground: #14532d;
+  --border: #4ade80;
+  --card: #ffffff;
+  --card-foreground: #14532d;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 * {

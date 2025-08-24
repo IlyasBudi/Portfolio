@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-// import { Menu, X, Moon, Sun } from 'lucide-react';
 import { siteConfig } from '@/lib/config';
+import ThemeSwitcher from './ThemeSwitcher';
 
 interface NavigationProps {
   darkMode: boolean;
@@ -25,7 +25,6 @@ export default function Navigation({ }: NavigationProps) {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="font-bold text-xl text-gray-900 dark:text-white">
-            {/* {siteConfig.name} */}
             Ilyas Budi
           </Link>
 
@@ -53,25 +52,13 @@ export default function Navigation({ }: NavigationProps) {
               </Link>
             ))}
             
-            {/* Dark Mode Toggle */}
-            {/* <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
-              aria-label="Toggle dark mode"
-            >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button> */}
+            {/* Theme Switcher - Temporarily disabled for testing */}
+            {/* <ThemeSwitcher /> */}
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
-            {/* <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
-              aria-label="Toggle dark mode"
-            >
-              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button> */}
+            {/* <ThemeSwitcher /> */}
             <button
               onClick={toggleMenu}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
