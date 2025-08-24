@@ -41,7 +41,7 @@
 
 /* System preference fallback for dark theme - only apply when no explicit theme is set */
 @media (prefers-color-scheme: dark) {
-  :root:not([class*="theme-"]) {
+  :root:not(.theme-light):not(.theme-dark):not(.theme-blue):not(.theme-purple):not(.theme-green) {
     --background: #0a0a0a;
     --foreground: #ededed;
     --primary: #60a5fa;

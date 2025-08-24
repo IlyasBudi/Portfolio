@@ -23,23 +23,23 @@ const applyTheme = (themeName: ThemeName) => {
   const theme = getTheme(themeName);
   const root = document.documentElement;
   
-  // Apply all theme colors as CSS custom properties
+  // Remove any existing theme classes first
+  root.className = root.className.replace(/theme-\w+/g, '').replace(/\bdark\b/g, '');
+  
+  // Add the new theme class
+  root.classList.add(`theme-${themeName}`);
+  
+  // Apply all theme colors as CSS custom properties with high priority
   Object.entries(CSS_VARIABLES).forEach(([key, cssVar]) => {
     const colorValue = theme.colors[key as keyof typeof theme.colors];
     if (colorValue) {
-      root.style.setProperty(cssVar, colorValue);
+      root.style.setProperty(cssVar, colorValue, 'important');
     }
   });
-  
-  // Add theme class for additional styling if needed
-  root.className = root.className.replace(/theme-\w+/g, '');
-  root.classList.add(`theme-${themeName}`);
   
   // Keep backward compatibility with dark class
   if (themeName === 'dark') {
     root.classList.add('dark');
-  } else {
-    root.classList.remove('dark');
   }
 };
 

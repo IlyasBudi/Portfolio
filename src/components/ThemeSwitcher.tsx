@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Palette, Check } from 'lucide-react';
+import { Palette, Check, X } from 'lucide-react';
 import { ThemeContext } from '@/components/ThemeProvider';
 import { ThemeName } from '@/types/theme';
 
@@ -18,61 +18,67 @@ const themeIcons: Record<ThemeName, string> = {
 };
 
 /**
- * ThemeSwitcher component with dropdown functionality
+ * ThemeSwitcher component with modal functionality
  * Features:
- * - Accessible dropdown with keyboard navigation
- * - Visual theme indicators with icons
+ * - Icon-based trigger button
+ * - Modal popup for theme selection
+ * - Visual theme indicators with icons and colors
  * - Smooth animations and transitions
  * - Responsive design for mobile and desktop
- * - ARIA labels for screen readers
+ * - ARIA labels for accessibility
+ * - Click outside to close
+ * - Escape key support
  */
 export default function ThemeSwitcher() {
   const themeContext = useContext(ThemeContext);
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   /**
-   * Close dropdown when clicking outside
+   * Close modal when clicking outside or pressing Escape
    */
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
         setIsOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+        buttonRef.current?.focus();
       }
     };
 
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-      return () => document.removeEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleKeyDown);
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden';
+      
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener('keydown', handleKeyDown);
+        document.body.style.overflow = 'unset';
+      };
     }
   }, [isOpen]);
 
   // Handle case where ThemeProvider is not available
   if (!themeContext) {
     return (
-      <div className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 min-w-[140px]">
-        <Palette size={16} className="text-gray-500 dark:text-gray-400" />
-        <span className="hidden sm:inline text-sm font-medium">Light</span>
-        <span className="sm:hidden text-lg" aria-hidden="true">☀️</span>
-      </div>
+      <button
+        className="p-2 rounded-lg bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 backdrop-blur-sm"
+        aria-label="Theme switcher"
+      >
+        <Palette size={20} className="text-gray-500 dark:text-gray-400" />
+      </button>
     );
   }
 
   const { currentTheme, setTheme, themes } = themeContext;
-
-  /**
-   * Handle keyboard navigation
-   */
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'Escape') {
-      setIsOpen(false);
-      buttonRef.current?.focus();
-    } else if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      setIsOpen(!isOpen);
-    }
-  };
 
   /**
    * Handle theme selection
@@ -86,77 +92,129 @@ export default function ThemeSwitcher() {
   const currentThemeData = themes.find(t => t.name === currentTheme);
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <>
       {/* Trigger Button */}
       <button
         ref={buttonRef}
-        onClick={() => setIsOpen(!isOpen)}
-        onKeyDown={handleKeyDown}
-        className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 backdrop-blur-sm min-w-[140px] justify-between"
+        onClick={() => setIsOpen(true)}
+        className="p-2 rounded-lg bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 backdrop-blur-sm hover:scale-105 active:scale-95"
         aria-label={`Current theme: ${currentThemeData?.displayName}. Click to open theme selector`}
-        aria-expanded={isOpen}
-        aria-haspopup="listbox"
       >
-        <div className="flex items-center space-x-2">
-          <Palette size={16} className="text-gray-500 dark:text-gray-400" />
-          <span className="hidden sm:inline text-sm font-medium">
-            {currentThemeData?.displayName}
-          </span>
-          <span className="sm:hidden text-lg" aria-hidden="true">
-            {themeIcons[currentTheme]}
-          </span>
-        </div>
-        <ChevronDown 
-          size={16} 
-          className={`text-gray-500 dark:text-gray-400 transition-transform duration-200 ${
-            isOpen ? 'rotate-180' : ''
-          }`}
-        />
+        <Palette size={20} className="text-gray-500 dark:text-gray-400" />
       </button>
 
-      {/* Dropdown Menu */}
+      {/* Modal Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="absolute top-full mt-2 right-0 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg backdrop-blur-sm z-50"
-            role="listbox"
-            aria-label="Theme options"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="theme-modal-title"
           >
-            <div className="py-2">
-              {themes.map((theme) => (
+            {/* Modal Content */}
+            <motion.div
+              ref={modalRef}
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 w-full max-w-md mx-auto overflow-hidden"
+            >
+              {/* Modal Header */}
+              <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+                <div className="flex items-center space-x-3">
+                  <Palette size={24} className="text-blue-500" />
+                  <h2 id="theme-modal-title" className="text-xl font-semibold text-gray-900 dark:text-white">
+                    Choose Theme
+                  </h2>
+                </div>
                 <button
-                  key={theme.name}
-                  onClick={() => handleThemeSelect(theme.name)}
-                  className="w-full flex items-center justify-between px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-150"
-                  role="option"
-                  aria-selected={currentTheme === theme.name}
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                  aria-label="Close theme selector"
                 >
-                  <div className="flex items-center space-x-3">
-                    <span className="text-lg" aria-hidden="true">
-                      {themeIcons[theme.name]}
-                    </span>
-                    <span className="font-medium">{theme.displayName}</span>
-                  </div>
-                  {currentTheme === theme.name && (
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Check size={16} className="text-blue-500" />
-                    </motion.div>
-                  )}
+                  <X size={20} className="text-gray-500 dark:text-gray-400" />
                 </button>
-              ))}
-            </div>
+              </div>
+
+              {/* Theme Options */}
+              <div className="p-6">
+                <div className="grid grid-cols-1 gap-3">
+                  {themes.map((theme) => (
+                    <motion.button
+                      key={theme.name}
+                      onClick={() => handleThemeSelect(theme.name)}
+                      className={`flex items-center justify-between p-4 rounded-xl border-2 transition-all duration-200 hover:scale-[1.02] ${
+                        currentTheme === theme.name
+                          ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                          : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700/50'
+                      }`}
+                      whileTap={{ scale: 0.98 }}
+                      role="option"
+                      aria-selected={currentTheme === theme.name}
+                    >
+                      <div className="flex items-center space-x-4">
+                        <div className="text-2xl" aria-hidden="true">
+                          {themeIcons[theme.name]}
+                        </div>
+                        <div className="text-left">
+                          <div className="font-semibold text-gray-900 dark:text-white">
+                            {theme.displayName}
+                          </div>
+                          <div className="text-sm text-gray-500 dark:text-gray-400 capitalize">
+                            {theme.name} theme
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Color Preview */}
+                      <div className="flex items-center space-x-2">
+                        <div className="flex space-x-1">
+                          <div 
+                            className="w-4 h-4 rounded-full border border-gray-300 dark:border-gray-600" 
+                            style={{ backgroundColor: theme.colors.background }}
+                          />
+                          <div 
+                            className="w-4 h-4 rounded-full border border-gray-300 dark:border-gray-600" 
+                            style={{ backgroundColor: theme.colors.primary }}
+                          />
+                          <div 
+                            className="w-4 h-4 rounded-full border border-gray-300 dark:border-gray-600" 
+                            style={{ backgroundColor: theme.colors.secondary }}
+                          />
+                        </div>
+                        
+                        {currentTheme === theme.name && (
+                          <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <Check size={20} className="text-blue-500" />
+                          </motion.div>
+                        )}
+                      </div>
+                    </motion.button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Modal Footer */}
+              <div className="px-6 py-4 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-200 dark:border-gray-700">
+                <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
+                  Your theme preference will be saved automatically
+                </p>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   );
 }
 
@@ -174,7 +232,7 @@ export function ThemeSwitcherCompact() {
         className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
         aria-label="Theme switcher"
       >
-        <span className="text-xl">☀️</span>
+        <Palette size={20} />
       </button>
     );
   }
@@ -193,7 +251,7 @@ export function ThemeSwitcherCompact() {
         className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
         aria-label={`Current theme: ${themes.find(t => t.name === currentTheme)?.displayName}`}
       >
-        <span className="text-xl">{themeIcons[currentTheme]}</span>
+        <Palette size={20} />
       </button>
 
       <AnimatePresence>
