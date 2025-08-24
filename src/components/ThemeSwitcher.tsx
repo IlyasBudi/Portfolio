@@ -111,21 +111,23 @@ export default function ThemeSwitcher() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9999] overflow-y-auto"
             role="dialog"
             aria-modal="true"
             aria-labelledby="theme-modal-title"
           >
-            {/* Modal Content */}
-            <motion.div
-              ref={modalRef}
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 w-full max-w-md mx-auto my-8 overflow-hidden relative"
-              style={{ maxHeight: 'calc(100vh - 4rem)' }}
-            >
+            {/* Centering Container */}
+            <div className="min-h-full flex items-center justify-center p-4">
+              {/* Modal Content */}
+              <motion.div
+                ref={modalRef}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 w-full max-w-md overflow-hidden relative"
+                style={{ maxHeight: 'calc(100vh - 2rem)' }}
+              >
               {/* Modal Header */}
               <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 sticky top-0 z-10">
                 <div className="flex items-center space-x-3">
@@ -212,6 +214,7 @@ export default function ThemeSwitcher() {
                 </p>
               </div>
             </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
