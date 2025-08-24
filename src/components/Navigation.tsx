@@ -11,9 +11,10 @@ import ThemeSwitcher from './ThemeSwitcher';
 interface NavigationProps {
   darkMode: boolean;
   toggleDarkMode: () => void;
+  mounted?: boolean;
 }
 
-export default function Navigation({ }: NavigationProps) {
+export default function Navigation({ mounted = false }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
@@ -52,13 +53,13 @@ export default function Navigation({ }: NavigationProps) {
               </Link>
             ))}
             
-            {/* Theme Switcher - Temporarily disabled for testing */}
-            {/* <ThemeSwitcher /> */}
+            {/* Theme Switcher - only show after mounted */}
+            {mounted && <ThemeSwitcher />}
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
-            {/* <ThemeSwitcher /> */}
+            {mounted && <ThemeSwitcher />}
             <button
               onClick={toggleMenu}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"

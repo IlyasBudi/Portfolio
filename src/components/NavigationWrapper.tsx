@@ -12,7 +12,7 @@ export default function NavigationWrapper() {
   }, []);
 
   if (!mounted) {
-    return <Navigation darkMode={false} toggleDarkMode={() => {}} />;
+    return <Navigation darkMode={false} toggleDarkMode={() => {}} mounted={false} />;
   }
 
   return <NavigationWrapperClient />;
@@ -20,6 +20,6 @@ export default function NavigationWrapper() {
 
 function NavigationWrapperClient() {
   const { darkMode, toggleDarkMode } = useTheme();
-  return <Navigation darkMode={darkMode} toggleDarkMode={toggleDarkMode} />;
+  return <Navigation darkMode={darkMode} toggleDarkMode={toggleDarkMode} mounted={true} />;
 }
 
