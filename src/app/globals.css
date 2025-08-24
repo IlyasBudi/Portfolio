@@ -39,25 +39,32 @@
   --font-sans: system-ui, sans-serif;
 }
 
-/* System preference fallback for dark theme - only apply when no explicit theme is set */
-@media (prefers-color-scheme: dark) {
-  :root:not(.theme-light):not(.theme-dark):not(.theme-blue):not(.theme-purple):not(.theme-green) {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --primary: #60a5fa;
-    --primary-foreground: #0f172a;
-    --secondary: #1e293b;
-    --secondary-foreground: #f8fafc;
-    --accent: #1e293b;
-    --accent-foreground: #f8fafc;
-    --muted: #1e293b;
-    --muted-foreground: #94a3b8;
-    --card: #0a0a0a;
-    --card-foreground: #ededed;
-    --border: #1e293b;
-    --input: #1e293b;
-    --ring: #60a5fa;
-  }
+/* System preference fallback removed - themes are fully controlled by JavaScript */
+
+/* Theme-specific body styling for maximum specificity */
+body.theme-light {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+}
+
+body.theme-dark {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+}
+
+body.theme-blue {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+}
+
+body.theme-purple {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+}
+
+body.theme-green {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
 }
 
 /* Smooth transitions for theme changes */

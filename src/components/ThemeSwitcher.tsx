@@ -111,7 +111,7 @@ export default function ThemeSwitcher() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto"
             role="dialog"
             aria-modal="true"
             aria-labelledby="theme-modal-title"
@@ -123,10 +123,11 @@ export default function ThemeSwitcher() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 w-full max-w-md mx-auto overflow-hidden"
+              className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 w-full max-w-md mx-auto my-8 overflow-hidden relative"
+              style={{ maxHeight: 'calc(100vh - 4rem)' }}
             >
               {/* Modal Header */}
-              <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+              <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 sticky top-0 z-10">
                 <div className="flex items-center space-x-3">
                   <Palette size={24} className="text-blue-500" />
                   <h2 id="theme-modal-title" className="text-xl font-semibold text-gray-900 dark:text-white">
@@ -142,8 +143,8 @@ export default function ThemeSwitcher() {
                 </button>
               </div>
 
-              {/* Theme Options */}
-              <div className="p-6">
+              {/* Theme Options - Scrollable */}
+              <div className="p-6 max-h-96 overflow-y-auto">
                 <div className="grid grid-cols-1 gap-3">
                   {themes.map((theme) => (
                     <motion.button
@@ -205,7 +206,7 @@ export default function ThemeSwitcher() {
               </div>
 
               {/* Modal Footer */}
-              <div className="px-6 py-4 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-200 dark:border-gray-700">
+              <div className="px-6 py-4 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-200 dark:border-gray-700 sticky bottom-0">
                 <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
                   Your theme preference will be saved automatically
                 </p>

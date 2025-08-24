@@ -22,25 +22,38 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(undefine
 const applyTheme = (themeName: ThemeName) => {
   const theme = getTheme(themeName);
   const root = document.documentElement;
+  const body = document.body;
   
   // Remove any existing theme classes first
   root.className = root.className.replace(/theme-\w+/g, '').replace(/\bdark\b/g, '');
+  body.className = body.className.replace(/theme-\w+/g, '').replace(/\bdark\b/g, '');
   
-  // Add the new theme class
+  // Add the new theme class to both root and body for maximum specificity
   root.classList.add(`theme-${themeName}`);
+  body.classList.add(`theme-${themeName}`);
   
-  // Apply all theme colors as CSS custom properties with high priority
+  // Apply all theme colors as CSS custom properties with maximum priority
   Object.entries(CSS_VARIABLES).forEach(([key, cssVar]) => {
     const colorValue = theme.colors[key as keyof typeof theme.colors];
     if (colorValue) {
+      // Apply to root with important
       root.style.setProperty(cssVar, colorValue, 'important');
+      // Also apply to body for extra specificity
+      body.style.setProperty(cssVar, colorValue, 'important');
     }
   });
   
   // Keep backward compatibility with dark class
   if (themeName === 'dark') {
     root.classList.add('dark');
+    body.classList.add('dark');
   }
+  
+  // Force a repaint to ensure changes take effect
+  root.style.display = 'none';
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  root.offsetHeight; // Trigger reflow
+  root.style.display = '';
 };
 
 /**
