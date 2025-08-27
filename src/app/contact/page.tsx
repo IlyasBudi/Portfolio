@@ -24,10 +24,12 @@ export default function ContactPage() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-4xl lg:text-5xl font-bold mb-4"
+              style={{ color: 'var(--foreground)' }}>
             Get In Touch
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg max-w-2xl mx-auto"
+             style={{ color: 'var(--muted-foreground)' }}>
             Have a project in mind or just want to say hello? I&apos;d love to hear from you. 
             Let&apos;s discuss how we can work together to bring your ideas to life.
           </p>
@@ -42,21 +44,33 @@ export default function ContactPage() {
             className="lg:col-span-1 space-y-8"
           >
             {/* Contact Details */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-200 dark:border-gray-700">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
+            <div className="rounded-xl shadow-lg p-8 border"
+                 style={{
+                   backgroundColor: 'var(--card)',
+                   borderColor: 'var(--border)'
+                 }}>
+              <h3 className="text-xl font-semibold mb-6"
+                  style={{ color: 'var(--card-foreground)' }}>
                 Contact Information
               </h3>
               
               <div className="space-y-4">
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
-                    <Mail size={20} className="text-blue-600 dark:text-blue-400" />
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-4"
+                       style={{
+                         backgroundColor: 'var(--accent)',
+                         color: 'var(--primary)'
+                       }}>
+                    <Mail size={20} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Email</p>
+                    <p className="text-sm" style={{ color: 'var(--muted-foreground)' }}>Email</p>
                     <a 
                       href={`mailto:${siteConfig.email}`}
-                      className="text-gray-900 dark:text-white font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                      className="font-medium transition-colors duration-200"
+                      style={{ color: 'var(--card-foreground)' }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = 'var(--card-foreground)'}
                     >
                       {siteConfig.email}
                     </a>
@@ -79,12 +93,16 @@ export default function ContactPage() {
                 </div> */}
 
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-4">
-                    <MapPin size={20} className="text-blue-600 dark:text-blue-400" />
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center mr-4"
+                       style={{
+                         backgroundColor: 'var(--accent)',
+                         color: 'var(--primary)'
+                       }}>
+                    <MapPin size={20} />
                   </div>
                   <div>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Location</p>
-                    <p className="text-gray-900 dark:text-white font-medium">
+                    <p className="text-sm" style={{ color: 'var(--muted-foreground)' }}>Location</p>
+                    <p className="font-medium" style={{ color: 'var(--card-foreground)' }}>
                       {siteConfig.location}
                     </p>
                   </div>
@@ -105,8 +123,13 @@ export default function ContactPage() {
             </div>
 
             {/* Social Media */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-200 dark:border-gray-700">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
+            <div className="rounded-xl shadow-lg p-8 border"
+                 style={{
+                   backgroundColor: 'var(--card)',
+                   borderColor: 'var(--border)'
+                 }}>
+              <h3 className="text-xl font-semibold mb-6"
+                  style={{ color: 'var(--card-foreground)' }}>
                 Follow Me
               </h3>
               
@@ -122,10 +145,23 @@ export default function ContactPage() {
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-200 group"
+                      className="flex items-center p-3 rounded-lg transition-colors duration-200 group"
+                      style={{
+                        backgroundColor: 'var(--secondary)'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = 'var(--accent)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = 'var(--secondary)';
+                      }}
                     >
-                      <Icon size={20} className="text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 mr-3" />
-                      <span className="text-gray-900 dark:text-white font-medium capitalize">
+                      <Icon size={20} className="mr-3 transition-colors duration-200"
+                            style={{ color: 'var(--muted-foreground)' }}
+                            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'}
+                            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted-foreground)'} />
+                      <span className="font-medium capitalize" 
+                            style={{ color: 'var(--foreground)' }}>
                         {platform}
                       </span>
                     </a>
@@ -135,17 +171,23 @@ export default function ContactPage() {
             </div>
 
             {/* Availability */}
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-8 border border-blue-200 dark:border-blue-800">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+            <div className="rounded-xl p-8 border"
+                 style={{
+                   backgroundColor: 'var(--card)',
+                   borderColor: 'var(--border)',
+                   backgroundImage: 'linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%)'
+                 }}>
+              <h3 className="text-xl font-semibold mb-4"
+                  style={{ color: 'var(--foreground)' }}>
                 Current Availability
               </h3>
               <div className="flex items-center mb-4">
                 <div className="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
-                <span className="text-green-600 dark:text-green-400 font-medium">
+                <span className="font-medium" style={{ color: 'var(--primary)' }}>
                   Available for new projects
                 </span>
               </div>
-              <p className="text-gray-600 dark:text-gray-400 text-sm">
+              <p className="text-sm" style={{ color: 'var(--muted-foreground)' }}>
                 I&apos;m currently accepting new freelance projects and collaborations. 
                 Let&apos;s discuss your next big idea!
               </p>

@@ -95,10 +95,12 @@ export default function ProjectsPage() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-4xl lg:text-5xl font-bold mb-4"
+              style={{ color: 'var(--foreground)' }}>
             My Projects
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg max-w-2xl mx-auto"
+             style={{ color: 'var(--muted-foreground)' }}>
             A collection of projects that showcase my skills and experience in various technologies
           </p>
         </motion.div>
@@ -113,29 +115,52 @@ export default function ProjectsPage() {
           <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
             {/* Search */}
             <div className="relative w-full lg:w-96">
-              <Search size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <Search size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2" 
+                     style={{ color: 'var(--muted-foreground)' }} />
               <input
                 type="text"
                 placeholder="Search projects..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400"
+                className="w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent transition-colors duration-200"
+                style={{
+                  borderColor: 'var(--border)',
+                  backgroundColor: 'var(--card)',
+                  color: 'var(--card-foreground)'
+                } as React.CSSProperties}
               />
             </div>
 
             {/* Category Filter */}
             <div className="flex items-center space-x-2">
-              <Filter size={20} className="text-gray-600 dark:text-gray-400" />
+              <Filter size={20} style={{ color: 'var(--muted-foreground)' }} />
               <div className="flex flex-wrap gap-2">
                 {categories.map((category) => (
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
+                    className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200`}
+                    style={
                       selectedCategory === category
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-                    }`}
+                        ? {
+                            backgroundColor: 'var(--primary)',
+                            color: 'var(--primary-foreground)'
+                          }
+                        : {
+                            backgroundColor: 'var(--secondary)',
+                            color: 'var(--secondary-foreground)'
+                          }
+                    }
+                    onMouseEnter={(e) => {
+                      if (selectedCategory !== category) {
+                        e.currentTarget.style.backgroundColor = 'var(--accent)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (selectedCategory !== category) {
+                        e.currentTarget.style.backgroundColor = 'var(--secondary)';
+                      }
+                    }}
                   >
                     {category}
                   </button>
@@ -159,13 +184,14 @@ export default function ProjectsPage() {
             </div>
           ) : (
             <div className="text-center py-20">
-              <div className="text-gray-400 dark:text-gray-600 mb-4">
+              <div className="mb-4" style={{ color: 'var(--muted-foreground)' }}>
                 <Filter size={48} className="mx-auto" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+              <h3 className="text-xl font-semibold mb-2"
+                  style={{ color: 'var(--foreground)' }}>
                 No projects found
               </h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p style={{ color: 'var(--muted-foreground)' }}>
                 Try adjusting your search or filter criteria
               </p>
             </div>
@@ -179,7 +205,7 @@ export default function ProjectsPage() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-16 text-center"
         >
-          <p className="text-gray-600 dark:text-gray-400">
+          <p style={{ color: 'var(--muted-foreground)' }}>
             Showing {filteredProjects.length} of {projects.length} projects
           </p>
         </motion.div>

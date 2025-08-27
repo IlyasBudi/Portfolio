@@ -92,23 +92,33 @@ export default function ThemeModal({ isOpen, onClose }: ThemeModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 w-full max-w-md overflow-hidden relative mx-auto my-auto"
-            style={{ maxHeight: 'calc(100vh - 2rem)' }}
+            className="rounded-2xl shadow-2xl border w-full max-w-md overflow-hidden relative mx-auto my-auto"
+            style={{ 
+              backgroundColor: 'var(--card)',
+              borderColor: 'var(--border)',
+              maxHeight: 'calc(100vh - 2rem)'
+            }}
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 sticky top-0 z-10">
+            <div className="flex items-center justify-between p-6 border-b sticky top-0 z-10"
+                 style={{ 
+                   backgroundColor: 'var(--card)',
+                   borderBottomColor: 'var(--border)'
+                 }}>
               <div className="flex items-center space-x-3">
-                <Palette size={24} className="text-blue-500" />
-                <h2 id="theme-modal-title" className="text-xl font-semibold text-gray-900 dark:text-white">
+                <Palette size={24} style={{ color: 'var(--primary)' }} />
+                <h2 id="theme-modal-title" className="text-xl font-semibold"
+                    style={{ color: 'var(--foreground)' }}>
                   Choose Theme
                 </h2>
               </div>
               <button
                 onClick={onClose}
-                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200"
+                className="p-2 rounded-lg transition-colors duration-200 hover:scale-105"
+                style={{ backgroundColor: 'var(--secondary)' }}
                 aria-label="Close theme selector"
               >
-                <X size={20} className="text-gray-500 dark:text-gray-400" />
+                <X size={20} style={{ color: 'var(--muted-foreground)' }} />
               </button>
             </div>
 
@@ -119,11 +129,11 @@ export default function ThemeModal({ isOpen, onClose }: ThemeModalProps) {
                   <motion.button
                     key={theme.name}
                     onClick={() => handleThemeSelect(theme.name)}
-                    className={`flex items-center justify-between p-4 rounded-xl border-2 transition-all duration-200 hover:scale-[1.02] ${
-                      currentTheme === theme.name
-                        ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
-                        : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700/50'
-                    }`}
+                    className={`flex items-center justify-between p-4 rounded-xl border-2 transition-all duration-200 hover:scale-[1.02]`}
+                    style={{
+                      borderColor: currentTheme === theme.name ? 'var(--ring)' : 'var(--border)',
+                      backgroundColor: currentTheme === theme.name ? 'var(--accent)' : 'transparent'
+                    }}
                     whileTap={{ scale: 0.98 }}
                     role="option"
                     aria-selected={currentTheme === theme.name}
@@ -133,10 +143,10 @@ export default function ThemeModal({ isOpen, onClose }: ThemeModalProps) {
                         {themeIcons[theme.name]}
                       </div>
                       <div className="text-left">
-                        <div className="font-semibold text-gray-900 dark:text-white">
+                        <div className="font-semibold" style={{ color: 'var(--foreground)' }}>
                           {theme.displayName}
                         </div>
-                        <div className="text-sm text-gray-500 dark:text-gray-400 capitalize">
+                        <div className="text-sm capitalize" style={{ color: 'var(--muted-foreground)' }}>
                           {theme.name} theme
                         </div>
                       </div>
@@ -146,16 +156,25 @@ export default function ThemeModal({ isOpen, onClose }: ThemeModalProps) {
                     <div className="flex items-center space-x-2">
                       <div className="flex space-x-1">
                         <div 
-                          className="w-4 h-4 rounded-full border border-gray-300 dark:border-gray-600" 
-                          style={{ backgroundColor: theme.colors.background }}
+                          className="w-4 h-4 rounded-full border" 
+                          style={{ 
+                            backgroundColor: theme.colors.background,
+                            borderColor: 'var(--border)'
+                          }}
                         />
                         <div 
-                          className="w-4 h-4 rounded-full border border-gray-300 dark:border-gray-600" 
-                          style={{ backgroundColor: theme.colors.primary }}
+                          className="w-4 h-4 rounded-full border" 
+                          style={{ 
+                            backgroundColor: theme.colors.primary,
+                            borderColor: 'var(--border)'
+                          }}
                         />
                         <div 
-                          className="w-4 h-4 rounded-full border border-gray-300 dark:border-gray-600" 
-                          style={{ backgroundColor: theme.colors.secondary }}
+                          className="w-4 h-4 rounded-full border" 
+                          style={{ 
+                            backgroundColor: theme.colors.secondary,
+                            borderColor: 'var(--border)'
+                          }}
                         />
                       </div>
                       
@@ -165,7 +184,7 @@ export default function ThemeModal({ isOpen, onClose }: ThemeModalProps) {
                           animate={{ scale: 1 }}
                           transition={{ duration: 0.2 }}
                         >
-                          <Check size={20} className="text-blue-500" />
+                          <Check size={20} style={{ color: 'var(--primary)' }} />
                         </motion.div>
                       )}
                     </div>
@@ -175,8 +194,12 @@ export default function ThemeModal({ isOpen, onClose }: ThemeModalProps) {
             </div>
 
             {/* Modal Footer */}
-            <div className="px-6 py-4 bg-gray-50 dark:bg-gray-800/50 border-t border-gray-200 dark:border-gray-700 sticky bottom-0">
-              <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
+            <div className="px-6 py-4 border-t sticky bottom-0"
+                 style={{ 
+                   backgroundColor: 'var(--muted)',
+                   borderTopColor: 'var(--border)'
+                 }}>
+              <p className="text-sm text-center" style={{ color: 'var(--muted-foreground)' }}>
                 Your theme preference will be saved automatically
               </p>
             </div>
