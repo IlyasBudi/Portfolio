@@ -40,10 +40,15 @@ export default function ThemeSwitcher() {
   if (!themeContext) {
     return (
       <button
-        className="p-2 rounded-lg bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 backdrop-blur-sm"
+        className="p-2 rounded-lg border backdrop-blur-sm transition-all duration-200"
+        style={{
+          backgroundColor: 'var(--card)',
+          borderColor: 'var(--border)',
+          color: 'var(--foreground)'
+        }}
         aria-label="Theme switcher"
       >
-        <Palette size={20} className="text-gray-500 dark:text-gray-400" />
+        <Palette size={20} style={{ color: 'var(--muted-foreground)' }} />
       </button>
     );
   }
@@ -66,10 +71,15 @@ export default function ThemeSwitcher() {
       <button
         ref={buttonRef}
         onClick={handleOpenModal}
-        className="p-2 rounded-lg bg-white/80 dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 backdrop-blur-sm hover:scale-105 active:scale-95"
+        className="p-2 rounded-lg border backdrop-blur-sm hover:scale-105 active:scale-95 transition-all duration-200"
+        style={{
+          backgroundColor: 'var(--card)',
+          borderColor: 'var(--border)',
+          color: 'var(--foreground)'
+        }}
         aria-label={`Current theme: ${currentThemeData?.displayName}. Click to open theme selector`}
       >
-        <Palette size={20} className="text-gray-500 dark:text-gray-400" />
+        <Palette size={20} style={{ color: 'var(--muted-foreground)' }} />
       </button>
 
       {/* Theme Modal - Rendered separately */}
@@ -89,7 +99,11 @@ export function ThemeSwitcherCompact() {
   if (!themeContext) {
     return (
       <button
-        className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
+        className="p-2 rounded-lg transition-colors duration-200"
+        style={{
+          backgroundColor: 'var(--secondary)',
+          color: 'var(--secondary-foreground)'
+        }}
         aria-label="Theme switcher"
       >
         <Palette size={20} />
@@ -108,7 +122,11 @@ export function ThemeSwitcherCompact() {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+        className="p-2 rounded-lg transition-colors duration-200 hover:scale-105"
+        style={{
+          backgroundColor: 'var(--secondary)',
+          color: 'var(--secondary-foreground)'
+        }}
         aria-label={`Current theme: ${themes.find(t => t.name === currentTheme)?.displayName}`}
       >
         <Palette size={20} />
@@ -120,17 +138,25 @@ export function ThemeSwitcherCompact() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="absolute top-full mt-2 right-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 min-w-[200px]"
-            style={{ maxWidth: 'calc(100vw - 2rem)' }}
+            className="absolute top-full mt-2 right-0 border rounded-lg shadow-lg z-50 min-w-[200px]"
+            style={{ 
+              backgroundColor: 'var(--card)',
+              borderColor: 'var(--border)',
+              maxWidth: 'calc(100vw - 2rem)'
+            }}
           >
             <div className="p-2 grid grid-cols-3 sm:grid-cols-5 gap-2">
               {themes.map((theme) => (
                 <button
                   key={theme.name}
                   onClick={() => handleThemeSelect(theme.name)}
-                  className={`p-3 rounded-lg text-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors min-w-[3rem] min-h-[3rem] flex items-center justify-center ${
-                    currentTheme === theme.name ? 'bg-gray-100 dark:bg-gray-700 ring-2 ring-blue-500' : ''
+                  className={`p-3 rounded-lg text-xl transition-colors min-w-[3rem] min-h-[3rem] flex items-center justify-center ${
+                    currentTheme === theme.name ? 'ring-2' : ''
                   }`}
+                  style={{
+                    backgroundColor: currentTheme === theme.name ? 'var(--accent)' : 'transparent',
+                    borderColor: currentTheme === theme.name ? 'var(--ring)' : 'transparent'
+                  }}
                   title={theme.displayName}
                   aria-label={`Switch to ${theme.displayName} theme`}
                 >
