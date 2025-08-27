@@ -120,17 +120,19 @@ export function ThemeSwitcherCompact() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            className="absolute top-full mt-1 right-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50"
+            className="absolute top-full mt-2 right-0 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50 min-w-[200px]"
+            style={{ maxWidth: 'calc(100vw - 2rem)' }}
           >
-            <div className="p-2 grid grid-cols-5 gap-1">
+            <div className="p-2 grid grid-cols-3 sm:grid-cols-5 gap-2">
               {themes.map((theme) => (
                 <button
                   key={theme.name}
                   onClick={() => handleThemeSelect(theme.name)}
-                  className={`p-2 rounded text-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors ${
-                    currentTheme === theme.name ? 'bg-gray-100 dark:bg-gray-700' : ''
+                  className={`p-3 rounded-lg text-xl hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors min-w-[3rem] min-h-[3rem] flex items-center justify-center ${
+                    currentTheme === theme.name ? 'bg-gray-100 dark:bg-gray-700 ring-2 ring-blue-500' : ''
                   }`}
                   title={theme.displayName}
+                  aria-label={`Switch to ${theme.displayName} theme`}
                 >
                   {themeIcons[theme.name]}
                 </button>
