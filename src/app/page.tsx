@@ -62,7 +62,8 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
-                  className="text-blue-600 dark:text-blue-400 font-medium"
+                  className="font-medium"
+                  style={{ color: 'var(--primary)' }}
                 >
                   Hello, I&apos;m
                 </motion.p>
@@ -70,7 +71,8 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white"
+                  className="text-4xl lg:text-6xl font-bold"
+                  style={{ color: 'var(--foreground)' }}
                 >
                   {siteConfig.name}
                 </motion.h1>
@@ -78,7 +80,8 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="text-2xl lg:text-3xl font-semibold text-gray-600 dark:text-gray-300"
+                  className="text-2xl lg:text-3xl font-semibold"
+                  style={{ color: 'var(--muted-foreground)' }}
                 >
                   {siteConfig.title}
                 </motion.h2>
@@ -86,7 +89,8 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
-                  className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-lg"
+                  className="text-lg leading-relaxed max-w-lg"
+                  style={{ color: 'var(--muted-foreground)' }}
                 >
                   {siteConfig.description}
                 </motion.p>
@@ -101,14 +105,37 @@ export default function Home() {
               >
                 <Link
                   href="/projects"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 group"
+                  className="inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-colors duration-200 group"
+                  style={{ 
+                    backgroundColor: 'var(--primary)',
+                    color: 'var(--primary-foreground)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'var(--primary)';
+                    e.currentTarget.style.opacity = '0.9';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'var(--primary)';
+                    e.currentTarget.style.opacity = '1';
+                  }}
                 >
                   View My Work
                   <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 font-medium rounded-lg transition-colors duration-200"
+                  className="inline-flex items-center justify-center px-6 py-3 border font-medium rounded-lg transition-colors duration-200"
+                  style={{
+                    borderColor: 'var(--border)',
+                    color: 'var(--foreground)',
+                    backgroundColor: 'transparent'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = 'var(--secondary)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                  }}
                 >
                   Get In Touch
                 </Link>
@@ -121,14 +148,17 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.6 }}
                 className="flex items-center space-x-4"
               >
-                <span className="text-sm text-gray-600 dark:text-gray-400">Follow me:</span>
+                <span className="text-sm" style={{ color: 'var(--muted-foreground)' }}>Follow me:</span>
                 <div className="flex space-x-3">
                   {siteConfig.social.github && (
                     <a
                       href={siteConfig.social.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                      className="p-2 transition-colors duration-200"
+                      style={{ color: 'var(--muted-foreground)' }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted-foreground)'}
                     >
                       <Github size={20} />
                     </a>
@@ -138,14 +168,20 @@ export default function Home() {
                       href={siteConfig.social.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                      className="p-2 transition-colors duration-200"
+                      style={{ color: 'var(--muted-foreground)' }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted-foreground)'}
                     >
                       <Linkedin size={20} />
                     </a>
                   )}
                   <a
                     href={`mailto:${siteConfig.email}`}
-                    className="p-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                    className="p-2 transition-colors duration-200"
+                    style={{ color: 'var(--muted-foreground)' }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = 'var(--primary)'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted-foreground)'}
                   >
                     <Mail size={20} />
                   </a>
@@ -172,7 +208,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20" style={{ backgroundColor: 'var(--secondary)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -181,10 +217,12 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4"
+                style={{ color: 'var(--foreground)' }}>
               Skills & Technologies
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg max-w-2xl mx-auto"
+               style={{ color: 'var(--muted-foreground)' }}>
               I work with modern technologies to build scalable and performant applications
             </p>
           </motion.div>
@@ -197,16 +235,25 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white dark:bg-gray-900 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700"
+                className="rounded-xl p-6 shadow-lg border"
+                style={{
+                  backgroundColor: 'var(--card)',
+                  borderColor: 'var(--border)'
+                }}
               >
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                <h3 className="text-xl font-semibold mb-4"
+                    style={{ color: 'var(--card-foreground)' }}>
                   {skillGroup.category}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {skillGroup.items.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium rounded-full"
+                      className="px-3 py-1 text-sm font-medium rounded-full"
+                      style={{
+                        backgroundColor: 'var(--accent)',
+                        color: 'var(--accent-foreground)'
+                      }}
                     >
                       {skill}
                     </span>
@@ -228,10 +275,12 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4"
+                style={{ color: 'var(--foreground)' }}>
               Featured Projects
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg max-w-2xl mx-auto"
+               style={{ color: 'var(--muted-foreground)' }}>
               Here are some of my recent projects that showcase my skills and experience
             </p>
           </motion.div>
@@ -251,7 +300,19 @@ export default function Home() {
           >
             <Link
               href="/projects"
-              className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 group"
+              className="inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-colors duration-200 group"
+              style={{ 
+                backgroundColor: 'var(--primary)',
+                color: 'var(--primary-foreground)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--primary)';
+                e.currentTarget.style.opacity = '0.8';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--primary)';
+                e.currentTarget.style.opacity = '1';
+              }}
             >
               View All Projects
               <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />

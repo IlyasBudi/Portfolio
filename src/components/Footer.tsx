@@ -13,18 +13,23 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+    <footer className="border-t" 
+            style={{ 
+              backgroundColor: 'var(--muted)', 
+              borderTopColor: 'var(--border)',
+              color: 'var(--foreground)'
+            }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* About Section */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
               {siteConfig.name}
             </h3>
-            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            <p className="text-sm leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>
               {siteConfig.description}
             </p>
-            <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+            <div className="flex items-center space-x-2 text-sm" style={{ color: 'var(--muted-foreground)' }}>
               <MapPin size={16} />
               <span>{siteConfig.location}</span>
             </div>
@@ -32,7 +37,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
               Quick Links
             </h3>
             <ul className="space-y-2">
@@ -40,7 +45,11 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 text-sm"
+                    className="transition-colors duration-200 text-sm hover:underline"
+                    style={{ 
+                      color: 'var(--muted-foreground)',
+                      textDecorationColor: 'var(--primary)'
+                    }}
                   >
                     {item.name}
                   </Link>
@@ -51,13 +60,17 @@ export default function Footer() {
 
           {/* Contact & Social */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-lg font-semibold" style={{ color: 'var(--foreground)' }}>
               Get In Touch
             </h3>
             <div className="space-y-2">
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 text-sm"
+                className="flex items-center space-x-2 transition-colors duration-200 text-sm hover:underline"
+                style={{ 
+                  color: 'var(--muted-foreground)',
+                  textDecorationColor: 'var(--primary)'
+                }}
               >
                 <Mail size={16} />
                 <span>{siteConfig.email}</span>
@@ -77,7 +90,11 @@ export default function Footer() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-300 dark:hover:bg-gray-700 transition-all duration-200"
+                    className="p-2 rounded-lg transition-all duration-200 hover:scale-105"
+                    style={{ 
+                      backgroundColor: 'var(--secondary)', 
+                      color: 'var(--secondary-foreground)'
+                    }}
                     aria-label={`Follow on ${platform}`}
                   >
                     <Icon size={18} />
@@ -89,9 +106,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <div className="mt-8 pt-8 border-t" style={{ borderTopColor: 'var(--border)' }}>
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm" style={{ color: 'var(--muted-foreground)' }}>
               © {currentYear} {siteConfig.name}. All rights reserved.
             </p>
             {/* <p className="text-sm text-gray-600 dark:text-gray-400">
