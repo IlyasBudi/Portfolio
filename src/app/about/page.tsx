@@ -15,10 +15,12 @@ export default function AboutPage() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-4xl lg:text-5xl font-bold mb-4"
+              style={{ color: 'var(--foreground)' }}>
             About Me
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg max-w-2xl mx-auto"
+             style={{ color: 'var(--muted-foreground)' }}>
             Get to know more about my journey, skills, and passion for creating amazing digital experiences
           </p>
         </motion.div>
@@ -31,26 +33,34 @@ export default function AboutPage() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="lg:col-span-1"
           >
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-200 dark:border-gray-700 sticky top-24">
+            <div className="rounded-xl shadow-lg p-8 border sticky top-24"
+                 style={{
+                   backgroundColor: 'var(--card)',
+                   borderColor: 'var(--border)'
+                 }}>
               {/* Profile Image */}
               <div className="relative w-48 h-48 mx-auto mb-6">
                 <img
                   src="/images/Profile.jpg"
                   alt="Profile"
-                  className="relative w-full h-full object-cover rounded-full border-4 border-white"
+                  className="relative w-full h-full object-cover rounded-full border-4"
+                  style={{ borderColor: 'var(--card)' }}
                 />
                 {/* <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-600 rounded-full"></div> */}
               </div>
 
               {/* Basic Info */}
               <div className="text-center mb-6">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                <h2 className="text-2xl font-bold mb-2"
+                    style={{ color: 'var(--card-foreground)' }}>
                   {siteConfig.name}
                 </h2>
-                <p className="text-blue-600 dark:text-blue-400 font-medium mb-4">
+                <p className="font-medium mb-4"
+                   style={{ color: 'var(--primary)' }}>
                   {siteConfig.title}
                 </p>
-                <div className="flex items-center justify-center text-gray-600 dark:text-gray-400 text-sm">
+                <div className="flex items-center justify-center text-sm"
+                     style={{ color: 'var(--muted-foreground)' }}>
                   <MapPin size={16} className="mr-1" />
                   {siteConfig.location}
                 </div>
@@ -75,7 +85,17 @@ export default function AboutPage() {
               {/* Download CV Button */}
               <button
                 onClick={() => window.open('/files/CV - Ilyas Budi Wahyu Jati.pdf', '_blank')}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                className="w-full font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                style={{
+                  backgroundColor: 'var(--primary)',
+                  color: 'var(--primary-foreground)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.opacity = '0.9';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.opacity = '1';
+                }}
               >
                 <Download size={20} className="mr-2" />
                 Download CV
@@ -91,11 +111,17 @@ export default function AboutPage() {
             className="lg:col-span-2 space-y-12"
           >
             {/* About Text */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-200 dark:border-gray-700">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <div className="rounded-xl shadow-lg p-8 border"
+                 style={{
+                   backgroundColor: 'var(--card)',
+                   borderColor: 'var(--border)'
+                 }}>
+              <h3 className="text-2xl font-bold mb-6"
+                  style={{ color: 'var(--card-foreground)' }}>
                 Summary
               </h3>
-              <div className="prose prose-lg dark:prose-invert max-w-none">
+              <div className="prose prose-lg max-w-none"
+                   style={{ color: 'var(--muted-foreground)' }}>
                 <p>
                   Hello! I&apos;m {siteConfig.name}, a passionate {siteConfig.title.toLowerCase()} based in {siteConfig.location}.
                 </p>
@@ -153,8 +179,13 @@ export default function AboutPage() {
             </div> */}
 
             {/* Experience */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-200 dark:border-gray-700">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <div className="rounded-xl shadow-lg p-8 border"
+                 style={{
+                   backgroundColor: 'var(--card)',
+                   borderColor: 'var(--border)'
+                 }}>
+              <h3 className="text-2xl font-bold mb-6"
+                  style={{ color: 'var(--card-foreground)' }}>
                 Experience
               </h3>
               <div className="space-y-6">
@@ -164,23 +195,28 @@ export default function AboutPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                    className="border-l-4 border-blue-600 pl-6"
+                    className="border-l-4 pl-6"
+                    style={{ borderLeftColor: 'var(--primary)' }}
                   >
                     <div className="flex items-start justify-between mb-2">
                       <div>
-                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        <h4 className="text-lg font-semibold"
+                            style={{ color: 'var(--card-foreground)' }}>
                           {exp.position}
                         </h4>
-                        <p className="text-blue-600 dark:text-blue-400 font-medium">
+                        <p className="font-medium"
+                           style={{ color: 'var(--primary)' }}>
                           {exp.company}
                         </p>
                       </div>
-                      <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                      <div className="flex items-center text-sm"
+                           style={{ color: 'var(--muted-foreground)' }}>
                         <Calendar size={16} className="mr-1" />
                         {exp.duration}
                       </div>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-400 whitespace-pre-line">
+                    <p className="whitespace-pre-line"
+                       style={{ color: 'var(--muted-foreground)' }}>
                       {exp.description}
                     </p>
                   </motion.div>
@@ -189,8 +225,13 @@ export default function AboutPage() {
             </div>
 
             {/* Education */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-200 dark:border-gray-700">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <div className="rounded-xl shadow-lg p-8 border"
+                 style={{
+                   backgroundColor: 'var(--card)',
+                   borderColor: 'var(--border)'
+                 }}>
+              <h3 className="text-2xl font-bold mb-6"
+                  style={{ color: 'var(--card-foreground)' }}>
                 Education
               </h3>
               <div className="space-y-6">
@@ -200,23 +241,27 @@ export default function AboutPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                    className="border-l-4 border-blue-600 pl-6"
+                    className="border-l-4 pl-6"
+                    style={{ borderLeftColor: 'var(--primary)' }}
                   >
                     <div className="flex items-start justify-between mb-2">
                       <div>
-                        <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        <h4 className="text-lg font-semibold"
+                            style={{ color: 'var(--card-foreground)' }}>
                           {edu.degree}
                         </h4>
-                        <p className="text-blue-600 dark:text-blue-400 font-medium">
+                        <p className="font-medium"
+                           style={{ color: 'var(--primary)' }}>
                           {edu.institution}
                         </p>
                       </div>
-                      <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
+                      <div className="flex items-center text-sm"
+                           style={{ color: 'var(--muted-foreground)' }}>
                         <Calendar size={16} className="mr-1" />
                         {edu.duration}
                       </div>
                     </div>
-                    <p className="text-gray-600 dark:text-gray-400">
+                    <p style={{ color: 'var(--muted-foreground)' }}>
                       {edu.description}
                     </p>
                   </motion.div>
@@ -225,8 +270,13 @@ export default function AboutPage() {
             </div>
 
             {/* Achievements */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-200 dark:border-gray-700">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <div className="rounded-xl shadow-lg p-8 border"
+                 style={{
+                   backgroundColor: 'var(--card)',
+                   borderColor: 'var(--border)'
+                 }}>
+              <h3 className="text-2xl font-bold mb-6"
+                  style={{ color: 'var(--card-foreground)' }}>
                 Achievements & Certifications
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -241,10 +291,13 @@ export default function AboutPage() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                    className="flex items-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg"
+                    className="flex items-center p-4 rounded-lg"
+                    style={{
+                      backgroundColor: 'var(--accent)'
+                    }}
                   >
-                    <Award size={20} className="text-blue-600 dark:text-blue-400 mr-3" />
-                    <span className="text-gray-900 dark:text-white font-medium">
+                    <Award size={20} className="mr-3" style={{ color: 'var(--primary)' }} />
+                    <span className="font-medium" style={{ color: 'var(--accent-foreground)' }}>
                       {achievement}
                     </span>
                   </motion.div>

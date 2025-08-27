@@ -64,23 +64,34 @@ export default function ContactForm() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 border border-gray-200 dark:border-gray-700"
+      className="rounded-xl shadow-lg p-8 border"
+      style={{
+        backgroundColor: 'var(--card)',
+        borderColor: 'var(--border)'
+      }}
     >
-      <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
+      <h3 className="text-2xl font-semibold mb-6"
+          style={{ color: 'var(--card-foreground)' }}>
         Send me a message
       </h3>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         {/* Name Field */}
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label htmlFor="name" className="block text-sm font-medium mb-2"
+                 style={{ color: 'var(--muted-foreground)' }}>
             Name *
           </label>
           <input
             type="text"
             id="name"
             {...register('name', { required: 'Name is required' })}
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors duration-200"
+            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+            style={{
+              borderColor: 'var(--border)',
+              backgroundColor: 'var(--card)',
+              color: 'var(--card-foreground)'
+            }}
             placeholder="Your full name"
           />
           {errors.name && (
@@ -90,7 +101,8 @@ export default function ContactForm() {
 
         {/* Email Field */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label htmlFor="email" className="block text-sm font-medium mb-2"
+                 style={{ color: 'var(--muted-foreground)' }}>
             Email *
           </label>
           <input
@@ -103,7 +115,12 @@ export default function ContactForm() {
                 message: 'Invalid email address'
               }
             })}
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors duration-200"
+            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+            style={{
+              borderColor: 'var(--border)',
+              backgroundColor: 'var(--card)',
+              color: 'var(--card-foreground)'
+            }}
             placeholder="your.email@example.com"
           />
           {errors.email && (
@@ -113,14 +130,20 @@ export default function ContactForm() {
 
         {/* Subject Field */}
         <div>
-          <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label htmlFor="subject" className="block text-sm font-medium mb-2"
+                 style={{ color: 'var(--muted-foreground)' }}>
             Subject *
           </label>
           <input
             type="text"
             id="subject"
             {...register('subject', { required: 'Subject is required' })}
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors duration-200"
+            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+            style={{
+              borderColor: 'var(--border)',
+              backgroundColor: 'var(--card)',
+              color: 'var(--card-foreground)'
+            }}
             placeholder="What's this about?"
           />
           {errors.subject && (
@@ -130,14 +153,20 @@ export default function ContactForm() {
 
         {/* Message Field */}
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+          <label htmlFor="message" className="block text-sm font-medium mb-2"
+                 style={{ color: 'var(--muted-foreground)' }}>
             Message *
           </label>
           <textarea
             id="message"
             rows={6}
             {...register('message', { required: 'Message is required' })}
-            className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors duration-200 resize-none"
+            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200 resize-none"
+            style={{
+              borderColor: 'var(--border)',
+              backgroundColor: 'var(--card)',
+              color: 'var(--card-foreground)'
+            }}
             placeholder="Tell me about your project or just say hello!"
           />
           {errors.message && (
@@ -151,7 +180,11 @@ export default function ContactForm() {
           disabled={isSubmitting}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
+          className="w-full font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center space-x-2"
+          style={{
+            backgroundColor: isSubmitting ? 'var(--muted)' : 'var(--primary)',
+            color: isSubmitting ? 'var(--muted-foreground)' : 'var(--primary-foreground)'
+          }}
         >
           {isSubmitting ? (
             <>
