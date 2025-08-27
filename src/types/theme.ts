@@ -29,6 +29,7 @@ export interface ThemeColors {
   // Card colors
   card: string;
   cardForeground: string;
+  cards: string;
   
   // Border colors
   border: string;
@@ -68,6 +69,7 @@ export const CSS_VARIABLES = {
   muted: '--muted',
   mutedForeground: '--muted-foreground',
   card: '--card',
+  cards: '--cards',
   cardForeground: '--card-foreground',
   border: '--border',
   input: '--input',

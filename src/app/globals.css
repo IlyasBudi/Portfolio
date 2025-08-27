@@ -14,6 +14,7 @@
   --muted: #f8fafc;
   --muted-foreground: #64748b;
   --card: #ffffff;
+  --cards: #ffffff;
   --card-foreground: #171717;
   --border: #e2e8f0;
   --input: #e2e8f0;
@@ -32,6 +33,7 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-card: var(--card);
+  --color-cards: var(--cards);
   --color-card-foreground: var(--card-foreground);
   --color-border: var(--border);
   --color-input: var(--input);

@@ -204,7 +204,8 @@ export default function ContactForm() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center space-x-2 text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 p-4 rounded-lg"
+            className="flex items-center space-x-2 text-green-600 dark:text-green-400 p-4 rounded-lg"
+            style={{ backgroundColor: 'var(--accent)' }}
           >
             <CheckCircle size={20} />
             <span>Message sent successfully! I&apos;ll get back to you soon.</span>

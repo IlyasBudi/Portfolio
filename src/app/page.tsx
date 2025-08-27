@@ -307,7 +307,7 @@ export default function Home() {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--primary)';
-                e.currentTarget.style.opacity = '0.9';
+                e.currentTarget.style.opacity = '0.8';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--primary)';

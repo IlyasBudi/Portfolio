@@ -22,7 +22,7 @@ export default function Navigation({ }: NavigationProps) {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b" 
          style={{ 
-           backgroundColor: 'var(--card)', 
+           backgroundColor: 'rgba(var(--cards), 0.8)',
            borderBottomColor: 'var(--border)',
            color: 'var(--foreground)'
          }}>
