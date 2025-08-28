@@ -18,6 +18,12 @@ function ensureDir(dir) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 }
 
+function writeAtomic(filePath, data) {
+  const tmp = filePath + '.tmp';
+  fs.writeFileSync(tmp, typeof data === 'string' ? data : JSON.stringify(data, null, 2));
+  fs.renameSync(tmp, filePath);
+}
+
 function slugify(str = '') {
   return String(str)
     .toLowerCase()
@@ -35,6 +41,12 @@ function toISODate(val) {
     : d.toISOString().slice(0, 10);
 }
 
+function toBool(v) {
+  if (typeof v === 'boolean') return v;
+  if (typeof v === 'string') return /^(true|yes|1)$/i.test(v.trim().replace(/,$/, ''));
+  return Boolean(v);
+}
+
 function wordCount(text = '') {
   return text.split(/\s+/).filter(Boolean).length;
 }
@@ -44,8 +56,18 @@ function readDirMarkdown(dir) {
   return fs.readdirSync(dir).filter(f => f.toLowerCase().endsWith('.md'));
 }
 
-function writeJson(filePath, data) {
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+function toPublicImagePath(v) {
+  if (!v) return '';
+  const s = String(v).trim();
+  if (!s) return '';
+  return s.startsWith('/') ? s : `/${s}`;
+}
+
+function normalizeImages(v) {
+  if (!v) return [];
+  if (Array.isArray(v)) return v.map((x) => toPublicImagePath(x)).filter(Boolean);
+  if (typeof v === 'string') return [toPublicImagePath(v)].filter(Boolean);
+  return [];
 }
 
 /* =========================
@@ -65,23 +87,28 @@ function parseProjectFile(filePath, seenSlugs) {
   while (seenSlugs.has(slug)) slug = `${preferred}-${i++}`;
   seenSlugs.add(slug);
 
-  // normalize arrays
+  // arrays
   const techStack = Array.isArray(data.techStack)
     ? data.techStack.map(String)
     : (typeof data.techStack === 'string' && data.techStack.trim()
         ? [String(data.techStack)]
         : []);
 
+  // images (support string or array); also expose `image` = first
+  const images = normalizeImages(data.image);
+  const image = images[0] || '';
+
   return {
     slug,
     title,
     description: data.description ? String(data.description) : '',
     category: data.category ? String(data.category) : 'General',
-    featured: Boolean(data.featured),
+    featured: toBool(data.featured),
     techStack,
     demoLink: data.demoLink ? String(data.demoLink) : '',
     githubLink: data.githubLink ? String(data.githubLink) : '',
-    image: data.image ? String(data.image) : '',
+    image,      // untuk komponen kartu
+    images,     // simpan semua jika diperlukan di detail page
     date: toISODate(data.date),
     content,
     readingTime: Math.max(1, Math.ceil(wordCount(content) / 200)),
@@ -125,15 +152,15 @@ function generateProjectsData() {
 
   ensureDir(OUTPUT_DIR);
 
-  // write projects.json
+  // write projects.json (atomic)
   const projectsPath = path.join(OUTPUT_DIR, 'projects.json');
-  writeJson(projectsPath, projects);
+  writeAtomic(projectsPath, projects);
   console.log(`✅ Generated ${projects.length} projects in ${projectsPath}`);
 
   // categories.json (filter falsy)
   const categories = [...new Set(projects.map(p => p.category).filter(Boolean))];
   const categoriesPath = path.join(OUTPUT_DIR, 'categories.json');
-  writeJson(categoriesPath, categories);
+  writeAtomic(categoriesPath, categories);
   console.log(`✅ Generated ${categories.length} categories in ${categoriesPath}`);
 
   // tech-stack.json
@@ -141,7 +168,7 @@ function generateProjectsData() {
     ...new Set(projects.flatMap(p => Array.isArray(p.techStack) ? p.techStack : []))
   ];
   const techStackPath = path.join(OUTPUT_DIR, 'tech-stack.json');
-  writeJson(techStackPath, techStack);
+  writeAtomic(techStackPath, techStack);
   console.log(`✅ Generated ${techStack.length} technologies in ${techStackPath}`);
 
   return { projects, categories, techStack };
@@ -175,7 +202,7 @@ function generateSitemap(projectsArg) {
   };
 
   const sitemapPath = path.join(OUTPUT_DIR, 'sitemap.json');
-  writeJson(sitemapPath, sitemap);
+  writeAtomic(sitemapPath, sitemap);
   console.log(`✅ Generated sitemap data in ${sitemapPath}`);
 }
 
