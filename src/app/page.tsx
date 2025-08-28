@@ -15,9 +15,9 @@ export default function Home() {
     // Mock featured projects data
     const mockProjects: Project[] = [
       {
-        slug: 'siakad-darunnajah',
-        title: 'SIAKAD - Darunnajah Academic Information System',
-        description: 'Academic information system for managing student data, grades, attendance, and schedules at Darunnajah Islamic Boarding School.',
+        slug: 'siakad',
+        title: 'SIAKAD - Academic Information System',
+        description: 'Academic information system for managing student data, grades, attendance, and schedules at Islamic Boarding School.',
         category: 'Web Development',
         featured: true,
         techStack: ['Express.js', 'Angular', 'TypeScript', 'Bootstrap', 'PostgreSQL'],
