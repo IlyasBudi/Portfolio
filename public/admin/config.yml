@@ -2,7 +2,7 @@ backend:
   name: github        # menggunakan backend GitHub:contentReference[oaicite:4]{index=4}
   repo: IlyasBudi/Portfolio  # ganti dengan owner/repo Anda sendiri
   branch: dev        # branch yang diupdate
-  base_url: https://ilyasbudi.vercel.app  # domain situs Anda setelah deploy
+  base_url: https://portfolio-git-dev-ilyas-budis-projects.vercel.app  # domain situs Anda setelah deploy
   auth_endpoint: api/auth      # endpoint OAuth kustom:contentReference[oaicite:5]{index=5}
 
 media_folder: public/images/projects   # folder upload di repo:contentReference[oaicite:6]{index=6}
