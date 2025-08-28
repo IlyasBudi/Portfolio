@@ -1,9 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  /* opsi konfigurasi lain di sini */
   images: {
     domains: ['ilyasbudi.vercel.app'],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/admin',
+        destination: '/admin/index.html',
+        permanent: false,
+      },
+    ];
   },
 };
 
