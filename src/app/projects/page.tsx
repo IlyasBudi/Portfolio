@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Search, Filter } from 'lucide-react';
 import ProjectCard from '@/components/ProjectCard';
 import { Project } from '@/types';
+import projectsData from '@/lib/data/projects.json';
 
 export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -14,54 +15,10 @@ export default function ProjectsPage() {
   const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
-    // Mock projects data
-    const mockProjects: Project[] = [
-      {
-        slug: 'siakad-darunnajah',
-        title: 'SIAKAD - Darunnajah Academic Information System',
-        description: 'Academic information system for managing student data, grades, attendance, and schedules at Darunnajah Islamic Boarding School.',
-        category: 'Web Development',
-        featured: true,
-        techStack: ['Express.js', 'Angular', 'TypeScript', 'Bootstrap', 'PostgreSQL'],
-        demoLink: '/#',
-        githubLink: '/#',
-        image: '/images/projects/darunnajah/dn1.webp',
-        content: '',
-        date: '2024-01-15'
-      },
-      {
-        slug: 'tracking-inventory-system',
-        title: 'Garment Tracking & Inventory System',
-        description: 'A platform to monitor production processes, raw material stock, and goods delivery in garment/textile factories.',
-        category: 'Web Development',
-        featured: true,
-        techStack: ["Laravel", "TailwindCSS", "MySQL"],
-        demoLink: '/#',
-        githubLink: '/#',
-        image: '/images/projects/garment/garment1.webp',
-        content: '',
-        date: '2023-11-20'
-      },
-      {
-        slug: 'tour-bus-booking-system',
-        title: 'Tour Bus Booking System',
-        description: 'A web-based booking system that enables customers to reserve tour buses from multiple branches with dynamic pricing based on distance, rental duration, and bus type.',
-        category: 'Web Development',
-        featured: true,
-        techStack: ["Laravel", "TailwindCSS", "MySQL", "Midtrans", "Leaflet.js", "mapbox"],
-        demoLink: '/#',
-        githubLink: 'https://github.com/IlyasBudi/TA-2',
-        image: '/images/projects/booking-bus/booking-bus1.png',
-        content: '',
-        date: '2023-11-20'
-      },
-    ];
-
-    setProjects(mockProjects);
-    setFilteredProjects(mockProjects);
-    
-    // Extract unique categories
-    const uniqueCategories = Array.from(new Set(mockProjects.map(p => p.category)));
+    const data = projectsData as unknown as Project[];
+    setProjects(data);
+    setFilteredProjects(data);
+    const uniqueCategories = Array.from(new Set(data.map(p => p.category)));
     setCategories(['All', ...uniqueCategories]);
   }, []);
 
