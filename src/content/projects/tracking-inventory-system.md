@@ -1,5 +1,6 @@
 ---
 title: "Garment Tracking & Inventory System"
+slug: "tracking-inventory-system"
 description: "A platform to monitor production processes, raw material stock, and goods delivery in garment/textile factories."
 category: "Web Development"
 featured: true
