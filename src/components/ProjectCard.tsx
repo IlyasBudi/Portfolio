@@ -110,7 +110,12 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           </h3>
         </a>
         <p className="text-sm leading-relaxed mb-4"
-           style={{ color: 'var(--muted-foreground)' }}>
+           style={{ color: 'var(--muted-foreground)',
+                    display: '-webkit-box',
+                    WebkitBoxOrient: 'vertical',
+                    WebkitLineClamp: 3,   // jumlah baris
+                    overflow: 'hidden'
+                }}>
           {project.description}
         </p>
 
