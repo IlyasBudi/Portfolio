@@ -44,9 +44,19 @@ export const siteConfig = {
       description: `- Organizing and managing active and inactive records.
                     - Retention and disposal of records.
                     - Maintenance and security of active and inactive records.
-                    - Transfer of inactive records to the BNI Record Center.
                     - Storage and classification of records.
                     - Retrieval and re-archiving.`
+    },
+    {
+      company: "Skilvul - Front End Web Development Bootcamp",
+      position: "Student",
+      duration: "Aug 2022 - Dec 2022",
+      description: `- Built a responsive, dynamic front-end site using HTML, CSS, Vanilla JS,
+                      Bootstrap, and data via MockAPI/Local Storage.
+                    - Built a React application with Redux state management and external API
+                      consumption for dynamic features.
+                    - Collaborated with Back-End; used React, functional components, hooks, Redux,
+                      and APIs.`
     },
     {
       company: "Informatics Student Association (HMIF)",
