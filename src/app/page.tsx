@@ -10,38 +10,28 @@ import { Project } from '@/types';
 
 export default function Home() {
   const [featuredProjects, setFeaturedProjects] = useState<Project[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Mock featured projects data
-    const mockProjects: Project[] = [
-      {
-        slug: 'siakad',
-        title: 'SIAKAD - Academic Information System',
-        description: 'Academic information system for managing student data, grades, attendance, and schedules at Islamic Boarding School.',
-        category: 'Web Development',
-        featured: true,
-        techStack: ['Express.js', 'Angular', 'TypeScript', 'Bootstrap', 'PostgreSQL'],
-        demoLink: '#',
-        githubLink: '#',
-        image: '/images/projects/darunnajah/dn1.webp',
-        content: '',
-        date: '2024-01-15'
-      },
-      {
-        slug: 'tracking-inventory-system',
-        title: 'Garment Tracking & Inventory System',
-        description: 'A platform to monitor production processes, raw material stock, and goods delivery in garment/textile factories.',
-        category: 'Web Development',
-        featured: true,
-        techStack: ["Laravel", "TailwindCSS", "MySQL"],
-        demoLink: '#',
-        githubLink: '#',
-        image: '/images/projects/garment/garment1.webp',
-        content: '',
-        date: '2023-11-20'
+    const loadProjects = async () => {
+      try {
+        // Dynamic import untuk menghindari hydration error
+        const { default: projectsData } = await import('@/lib/data/projects.json');
+        
+        const data = projectsData as Project[];
+        const featured = data
+          .filter(project => project.featured === true)
+          .slice(0, 2); // Batasi hanya 2 project pertama
+        
+        setFeaturedProjects(featured);
+        setIsLoaded(true);
+      } catch (error) {
+        console.error('Error loading projects:', error);
+        setIsLoaded(true);
       }
-    ];
-    setFeaturedProjects(mockProjects);
+    };
+
+    loadProjects();
   }, []);
 
   return (
@@ -285,42 +275,66 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {featuredProjects.map((project, index) => (
-              <ProjectCard key={project.slug} project={project} index={index} />
-            ))}
-          </div>
+          {/* Conditional rendering untuk menghindari hydration error */}
+          {isLoaded ? (
+            featuredProjects.length > 0 ? (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                  {featuredProjects.map((project, index) => (
+                    <ProjectCard key={project.slug} project={project} index={index} />
+                  ))}
+                </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <Link
-              href="/projects"
-              className="inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-colors duration-200 group"
-              style={{ 
-                backgroundColor: 'var(--primary)',
-                color: 'var(--primary-foreground)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--primary)';
-                e.currentTarget.style.opacity = '0.8';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--primary)';
-                e.currentTarget.style.opacity = '1';
-              }}
-            >
-              View All Projects
-              <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
-            </Link>
-          </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ once: true }}
+                  className="text-center"
+                >
+                  <Link
+                    href="/projects"
+                    className="inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-colors duration-200 group"
+                    style={{ 
+                      backgroundColor: 'var(--primary)',
+                      color: 'var(--primary-foreground)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = 'var(--primary)';
+                      e.currentTarget.style.opacity = '0.8';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = 'var(--primary)';
+                      e.currentTarget.style.opacity = '1';
+                    }}
+                  >
+                    View All Projects
+                    <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                  </Link>
+                </motion.div>
+              </>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="text-center py-12"
+              >
+                <p style={{ color: 'var(--muted-foreground)' }}>
+                  No featured projects available at the moment.
+                </p>
+              </motion.div>
+            )
+          ) : (
+            <div className="text-center py-12">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 mx-auto mb-4"
+                   style={{ borderColor: 'var(--primary)' }}></div>
+              <p style={{ color: 'var(--muted-foreground)' }}>Loading projects...</p>
+            </div>
+          )}
         </div>
       </section>
     </div>
   );
 }
-
