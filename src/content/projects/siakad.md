@@ -1,6 +1,6 @@
 ---
 title: SIAKAD - Academic Information System
-slug: "siakad"
+slug: siakad
 description: Academic information system for managing student data, grades,
   attendance, and schedules at Islamic Boarding School.
 category: Web Development
@@ -14,11 +14,12 @@ techStack:
 demoLink: /#
 githubLink: /#
 image:
-  - /images/projects/darunnajah/dn1.webp
-  - /images/projects/darunnajah/dn2.webp
-  - /images/projects/darunnajah/dn3.webp
-  - /images/projects/darunnajah/dn4.webp
-  - /images/projects/darunnajah/dn5.webp
+  - /images/projects/screenshot-2025-09-02-214811.png
+  - /images/projects/screenshot-2025-09-02-225231.png
+  - /images/projects/screenshot-2025-09-02-225250.png
+  - /images/projects/screenshot-2025-09-02-225318.png
+  - /images/projects/screenshot-2025-09-02-225337.png
+  - /images/projects/screenshot-2025-09-02-225355.png
 date: 2024-01-15
 ---
 # SIAKAD - Academic Information System
@@ -27,9 +28,9 @@ Academic information system for managing student data, grades, attendance, and s
 
 ## Key Features
 
-* **Student data management**
-* **Input & recap grades**
-* **Online attendance**
-* **Digital report card printing**
-* **Human resource management**
-* **Student finance**
+* Student data management
+* Input & recap grades
+* Online attendance
+* Digital report card printing
+* Human resource management
+* Student finance
