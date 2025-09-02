@@ -3,7 +3,7 @@ title: SIAKAD - Academic Information System
 slug: siakad
 description: Academic information system for managing student data, grades,
   attendance, and schedules at Islamic Boarding School.
-category: Web Development
+category: Siakad
 featured: true
 techStack:
   - Express.js
