@@ -59,6 +59,11 @@ body.theme-blue {
   color: var(--foreground) !important;
 }
 
+body.theme-solarized {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+}
+
 body.theme-purple {
   background: var(--background) !important;
   color: var(--foreground) !important;

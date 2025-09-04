@@ -106,6 +106,32 @@ const blueTheme: Theme = {
 };
 
 /**
+ * Solarized theme configuration
+ */
+const solarizedTheme: Theme = {
+  name: 'solarized',
+  displayName: 'Solarized',
+  colors: {
+  background: '#fdf7e2',
+  foreground: '#073541',
+  primary: '#278cd3',
+  primaryForeground: '#fdf7e2',
+  secondary: '#ff9500',
+  secondaryForeground: '#073541',
+  accent: '#ff9500',
+  accentForeground: '#fdf7e2',
+  muted: '#dad6ce',
+  mutedForeground: '#93a0a0',
+  card: '#fdf7e2',
+  cards: '253, 247, 226',
+  cardForeground: '#073541',
+  border: '#dad6ce',
+  input: '#dad6ce',
+  ring: '#278cd3',
+  },
+};
+
+/**
  * Purple theme configuration
  */
 const purpleTheme: Theme = {
@@ -164,6 +190,7 @@ export const themes: Theme[] = [
   lightTheme,
   darkTheme,
   blueTheme,
+  solarizedTheme,
   purpleTheme,
   greenTheme,
 ];

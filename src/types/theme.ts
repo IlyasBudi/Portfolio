@@ -3,7 +3,7 @@
  * Supports multiple color themes with proper TypeScript typing
  */
 
-export type ThemeName = 'light' | 'dark' | 'blue' | 'purple' | 'green';
+export type ThemeName = 'light' | 'dark' | 'blue' | 'solarized' | 'purple' | 'green';
 
 export interface ThemeColors {
   // Background colors
