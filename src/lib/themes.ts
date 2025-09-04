@@ -165,10 +165,10 @@ const DraculaTheme: Theme = {
   displayName: 'Dracula',
   colors: {
   background: '#272935',
-  foreground: '#f8f8f2',
+  foreground: '#ff7ac6',
   primary: '#bf95fa',
   primaryForeground: '#272935',
-  secondary: '#ff7ac6',
+  secondary: '#44475a',
   secondaryForeground: '#272935',
   accent: '#ff7ac6',
   accentForeground: '#272935',
