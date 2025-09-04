@@ -166,11 +166,11 @@ const DraculaTheme: Theme = {
   colors: {
   background: '#272935',
   foreground: '#bf95fa',
-  primary: '#ff7ac6',
+  primary: '#bf95fa',
   primaryForeground: '#272935',
   secondary: '#44475a',
   secondaryForeground: '#272935',
-  accent: '#bf95fa',
+  accent: '#ff7ac6',
   accentForeground: '#272935',
   muted: '#272935',
   mutedForeground: '#abb0bf',
