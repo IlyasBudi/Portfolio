@@ -15,6 +15,7 @@ const themeIcons: Record<ThemeName, string> = {
   blue: '🌊',
   solarized: '🌅',
   purple: '🔮',
+  dracula: '🎴',
   green: '🌿',
 };
 

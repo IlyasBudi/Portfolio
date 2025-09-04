@@ -158,6 +158,32 @@ const purpleTheme: Theme = {
 };
 
 /**
+ * Dracula theme configuration
+ */
+const DraculaTheme: Theme = {
+  name: 'dracula',
+  displayName: 'Dracula',
+  colors: {
+  background: '#272935',
+  foreground: '#f8f8f2',
+  primary: '#bf95fa',
+  primaryForeground: '#272935',
+  secondary: '#ff7ac6',
+  secondaryForeground: '#272935',
+  accent: '#ff7ac6',
+  accentForeground: '#272935',
+  muted: '#44475a',
+  mutedForeground: '#abb0bf',
+  card: '#272935',
+  cards: '39, 41, 53',
+  cardForeground: '#f8f8f2',
+  border: '#44475a',
+  input: '#44475a',
+  ring: '#bf95fa',
+  },
+};
+
+/**
  * Green theme configuration
  */
 const greenTheme: Theme = {
@@ -192,6 +218,7 @@ export const themes: Theme[] = [
   blueTheme,
   solarizedTheme,
   purpleTheme,
+  DraculaTheme,
   greenTheme,
 ];
 
