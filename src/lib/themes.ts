@@ -116,7 +116,7 @@ const solarizedTheme: Theme = {
   foreground: '#073541',
   primary: '#278cd3',
   primaryForeground: '#fdf7e2',
-  secondary: '#dad6ce',
+  secondary: '#278cd3',
   secondaryForeground: '#073541',
   accent: '#ff9500',
   accentForeground: '#fdf7e2',
