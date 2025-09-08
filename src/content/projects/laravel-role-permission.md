@@ -27,7 +27,7 @@ image:
   - /images/projects/Screenshot 2025-09-08 231708.png
 date: 2025-09-08
 ---
-# Laravel Role & Permission Management System
+# Laravel Role & Permission Starter Kit
 
 <div align="center">
 
