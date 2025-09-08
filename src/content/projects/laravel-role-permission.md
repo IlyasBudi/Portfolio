@@ -31,12 +31,6 @@ date: 2025-09-08
 
 <div align="center">
 
-![Laravel](https://img.shields.io/badge/Laravel-10.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
-![PHP](https://img.shields.io/badge/PHP-8.1+-777BB4?style=for-the-badge&logo=php&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Alpine.js](https://img.shields.io/badge/Alpine.js-3.x-8BC34A?style=for-the-badge&logo=alpine.js&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-
 **A modern, feature-rich role and permission management system for Laravel applications with beautiful UI and comprehensive admin panel**
 
 
@@ -69,8 +63,6 @@ date: 2025-09-08
 - **Dashboard Analytics** - User and system statistics
 - **Bulk Operations** - Mass user management capabilities
 - **Search & Filtering** - Advanced search across all entities
-- **Export Functionality** - Data export capabilities
-- **Activity Logging** - User action tracking and audit trails
 
 ---
 
@@ -79,16 +71,18 @@ date: 2025-09-08
 <div align="center">
 
 ### 🌟 Dashboard Overview
-![Dashboard](https://via.placeholder.com/800x450/4F46E5/FFFFFF?text=Dashboard+Overview)
+![Dashboard](https://i.imgur.com/6d76UVg.png)
 
 ### 👥 User Management
-![User Management](https://via.placeholder.com/800x450/059669/FFFFFF?text=User+Management)
+![User Management](https://i.imgur.com/5as4h5t.png)
 
 ### 🛡️ Role & Permission System
-![Roles](https://via.placeholder.com/800x450/DC2626/FFFFFF?text=Role+Management)
+![Roles](https://i.imgur.com/warINbH.png)
+![permissions](https://i.imgur.com/HGdul72.png)
 
 ### 🌓 Dark Mode Support
-![Dark Mode](https://via.placeholder.com/800x450/1F2937/FFFFFF?text=Dark+Mode+Interface)
+![Dark Mode](https://i.imgur.com/A8YvYmv.png)
+![Dark Mode](https://i.imgur.com/Z5EHFIl.png)
 
 </div>
 
@@ -250,4 +244,4 @@ The system uses Spatie Permission package. You can publish and modify the config
 - Alpine.js 
 - Heroicons
 
-**Made by IlyasBudi**
+**Made by [IlyasBudi](https://github.com/IlyasBudi)**
