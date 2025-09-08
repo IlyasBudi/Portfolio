@@ -106,6 +106,32 @@ const blueTheme: Theme = {
 };
 
 /**
+ * Solarized theme configuration
+ */
+const solarizedTheme: Theme = {
+  name: 'solarized',
+  displayName: 'Solarized',
+  colors: {
+  background: '#fdf7e2',
+  foreground: '#073541',
+  primary: '#278cd3',
+  primaryForeground: '#fdf7e2',
+  secondary: '#dad6ce',
+  secondaryForeground: '#073541',
+  accent: '#ff9500',
+  accentForeground: '#fdf7e2',
+  muted: '#fdf7e2',
+  mutedForeground: '#93a0a0',
+  card: '#fdf7e2',
+  cards: '253, 247, 226',
+  cardForeground: '#073541',
+  border: '#dad6ce',
+  input: '#dad6ce',
+  ring: '#278cd3',
+  },
+};
+
+/**
  * Purple theme configuration
  */
 const purpleTheme: Theme = {
@@ -128,6 +154,32 @@ const purpleTheme: Theme = {
     border: '#ddd6fe',
     input: '#f3e8ff',
     ring: '#a855f7',
+  },
+};
+
+/**
+ * Dracula theme configuration
+ */
+const DraculaTheme: Theme = {
+  name: 'dracula',
+  displayName: 'Dracula',
+  colors: {
+  background: '#272935',
+  foreground: '#bf95fa',
+  primary: '#bf95fa',
+  primaryForeground: '#272935',
+  secondary: '#44475a',
+  secondaryForeground: '#272935',
+  accent: '#ff7ac6',
+  accentForeground: '#272935',
+  muted: '#272935',
+  mutedForeground: '#abb0bf',
+  card: '#272935',
+  cards: '39, 41, 53',
+  cardForeground: '#f8f8f2',
+  border: '#44475a',
+  input: '#44475a',
+  ring: '#bf95fa',
   },
 };
 
@@ -164,7 +216,9 @@ export const themes: Theme[] = [
   lightTheme,
   darkTheme,
   blueTheme,
+  solarizedTheme,
   purpleTheme,
+  DraculaTheme,
   greenTheme,
 ];
 
