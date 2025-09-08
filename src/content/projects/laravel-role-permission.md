@@ -14,10 +14,20 @@ techStack:
   - Spatie
 demoLink: "#"
 githubLink: https://github.com/IlyasBudi/Laravel-RolePermission
-image: /images/projects/screenshot-2025-09-08-230613.png
+image:
+  - /images/projects/screenshot-2025-09-08-230613.png
+  - /images/projects/screenshot-2025-09-08-230554.png
+  - /images/projects/Screenshot 2025-09-08 231752.png
+  - /images/projects/screenshot-2025-09-08-230657.png
+  - /images/projects/screenshot-2025-09-08-230719.png
+  - /images/projects/screenshot-2025-09-08-230736.png
+  - /images/projects/Screenshot 2025-09-08 231530.png
+  - /images/projects/Screenshot 2025-09-08 231549.png
+  - /images/projects/Screenshot 2025-09-08 231604.png
+  - /images/projects/Screenshot 2025-09-08 231708.png
 date: 2025-09-08
 ---
-# 🛡️ Laravel Role & Permission Management System
+# Laravel Role & Permission Management System
 
 <div align="center">
 
