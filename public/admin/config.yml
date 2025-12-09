@@ -27,8 +27,16 @@ collections:
       - { label: "Featured", name: "featured", widget: "boolean", default: false }
       - { label: "Tech Stack", name: "techStack", widget: "list", 
           field: { label: "Tech", name: "tech", widget: "string" } }
-      - { label: "Demo Link", name: "demoLink", widget: "string", required: false }
-      - { label: "GitHub Link", name: "githubLink", widget: "string", required: false }
-      - { label: "Image", name: "image", widget: "image", required: true }
+      - { label: "Demo Link", name: "demoLink", widget: "string", required: false }
+      - { label: "GitHub Link", name: "githubLink", widget: "string", required: false }
+      - label: "Images"
+        name: "image"
+        widget: "list"
+        min: 1
+        summary: "{{fields.src}}"
+        field:
+          label: "Image"
+          name: "src"
+          widget: "image"
       - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD" }
       - { label: "Content", name: "body", widget: "markdown", required: false }

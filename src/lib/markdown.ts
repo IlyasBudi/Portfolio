@@ -33,6 +33,19 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
       .use(html)
       .process(content);
     
+    // Handle image field - bisa berupa string, array of strings, atau array of objects dengan property src
+    let imageData: string | string[] = '';
+    if (data.image) {
+      if (Array.isArray(data.image)) {
+        // Jika array, cek apakah berisi objects dengan property 'src' atau langsung strings
+        imageData = data.image.map((img: string | { src: string }) => 
+          typeof img === 'object' && img.src ? img.src : img
+        );
+      } else {
+        imageData = data.image;
+      }
+    }
+
     return {
       slug,
       title: data.title || '',
@@ -42,7 +55,7 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
       techStack: data.techStack || [],
       demoLink: data.demoLink,
       githubLink: data.githubLink,
-      image: data.image || '',
+      image: imageData,
       content: processedContent.toString(),
       date: data.date || new Date().toISOString(),
     };
