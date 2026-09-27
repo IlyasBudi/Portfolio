@@ -152,5 +152,3 @@ The application ecosystem is architected around a **Decoupled Multi-Tier Topolog
 - [Radix UI](https://www.radix-ui.com)
 - [Lucide Icons](https://lucide.dev)
 - [Framer Motion](https://www.framer.com/motion)
-
-**Made by [IlyasBudi](https://github.com/IlyasBudi)**
