@@ -24,7 +24,6 @@ image:
   - /images/projects/pkumi-rubrik-management.png
   - /images/projects/pkumi-gallery-manager.png
   - /images/projects/pkumi-faq-management.png
-  - /images/projects/pkumi-dark-mode.png
 date: 2026-09-27
 ---
 # PKUMI Corporate Portal & Admin CMS
@@ -39,14 +38,14 @@ date: 2026-09-27
 
 ## ✨ Features
 
-### 🎯 **Core Functionality & Public Portal (`fe-compro`)**
+### 🎯 **Core Functionality & Public Portal**
 - **Public Institutional Portal** - Modern company profile showcasing PKU Masjid Istiqlal's vision, history, leadership boards, lecturer directories, curriculum syllabi, and academic calendars.
 - **Scholarly & Opinion Publishing Engine (Khazanah & Rubrik)** - Multi-category publication system for academic articles, opinion pieces, and student scientific essays with search, tag filtering, read counts, and trending algorithms.
 - **Dynamic News & Press Releases** - Dynamic news publishing pipeline with categories, status management, image galleries, and social sharing.
 - **PMB & Admission Information Hub** - Registration information, admission timelines, downloadable guidelines, curriculum syllabi, and interactive FAQs.
 - **Interactive Multimedia Gallery** - Public photo and activity gallery organized by categorized event albums.
 
-### 🛠️ **Admin Back-Office CMS (`compro-admin`)**
+### 🛠️ **Admin Back-Office CMS**
 - **Interactive Dashboard Analytics** - Real-time statistics for articles, views, top contributors, news distribution, and recent submissions visualized with Recharts.
 - **Multi-Stage Moderation Workflow** - Editorial status transitions: *Draft*, *Hold*, *Published*, *Archived*, and *Unpublished* with admin review commenting.
 - **Institutional Master Data Management** - Full CRUD for leadership board members, lecturers, curriculum courses, and registration timelines.
@@ -55,8 +54,7 @@ date: 2026-09-27
 - **Contact Inbox & Inquiry Management** - Centralized management for public inquiries, contact messages, and FAQ items.
 
 ### 🎨 **Modern UI/UX**
-- **🌓 Dark/Light Mode Support** - Full theme switcher powered by `next-themes` with automatic system theme detection.
-- **📱 Fully Responsive Layout** - Mobile-first experience with a sleek collapsible admin sidebar and mobile navigation drawer.
+- **📱 Fully Responsive Layout** - Mobile-first experience with a sleek collapsible admin sidebar and intuitive navigation drawer.
 - **🎭 Motion & Micro-interactions** - Immersive parallax effects, smooth page transitions, and subtle hover animations with Framer Motion and GSAP.
 - **✍️ Rich Text WYSIWYG** - TipTap and Trix editors supporting embeds, formatted tables, code snippets, blockquotes, and image attachments.
 
@@ -82,8 +80,7 @@ date: 2026-09-27
 ![Khazanah Management](https://i.imgur.com/warINbH.png)
 ![Rubrik Workflow](https://i.imgur.com/HGdul72.png)
 
-### 🌓 Dark Mode & High Contrast Support
-![Dark Mode View](https://i.imgur.com/A8YvYmv.png)
+### 📱 Fully Responsive Mobile Layout
 ![Mobile Responsive](https://i.imgur.com/Z5EHFIl.png)
 
 </div>
@@ -96,14 +93,14 @@ The application ecosystem is architected around a **Decoupled Multi-Tier Topolog
 
 ```
 ┌─────────────────────────────────┐       ┌─────────────────────────────────┐
-│     fe-compro (Public Portal)   │       │   compro-admin (Admin CMS)      │
+│         Public Portal           │       │           Admin CMS             │
 │     Next.js 15 • Tailwind v4    │       │   Next.js 16 • TanStack Query   │
 └────────────────┬────────────────┘       └────────────────┬────────────────┘
                  │                                         │
                  │ HTTP Requests                           │ Bearer Auth (Sanctum)
                  ▼                                         ▼
 ┌───────────────────────────────────────────────────────────────────────────┐
-│                         be-compro (RESTful API Gateway)                   │
+│                         RESTful API Gateway / Backend                     │
 │                         Laravel 12.x • PHP 8.2 • MySQL                    │
 │                                                                           │
 │  • Content Management (News, Khazanah, Rubrik, Boards, FAQs, Agendas)     │
@@ -139,9 +136,9 @@ The application ecosystem is architected around a **Decoupled Multi-Tier Topolog
 
 | Module | Core Responsibility | Primary Technology |
 | :--- | :--- | :--- |
-| **Public Portal (`fe-compro`)** | Public institutional landing page, news reader, scholarly article portal, academic curriculum display, and admission guide. | Next.js 15, React 18, Tailwind CSS v4, Framer Motion, GSAP |
-| **Admin CMS (`compro-admin`)** | Complete institutional back-office management, article review & moderation, curriculum manager, media library, and analytics. | Next.js 16, TypeScript, TanStack Query v5, TipTap, Recharts |
-| **REST API Backend (`be-compro`)** | Centralized RESTful API, authentication authority (Sanctum), request sanitization, media processing, and content storage. | Laravel 12.x, PHP 8.2+, MySQL, Eloquent ORM |
+| **Public Portal** | Public institutional landing page, news reader, scholarly article portal, academic curriculum display, and admission guide. | Next.js 15, React 18, Tailwind CSS v4, Framer Motion, GSAP |
+| **Admin CMS** | Complete institutional back-office management, article review & moderation, curriculum manager, media library, and analytics. | Next.js 16, TypeScript, TanStack Query v5, TipTap, Recharts |
+| **REST API Backend** | Centralized RESTful API, authentication authority (Sanctum), request sanitization, media processing, and content storage. | Laravel 12.x, PHP 8.2+, MySQL, Eloquent ORM |
 
 ---
 
